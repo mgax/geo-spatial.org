@@ -1,0 +1,67 @@
+---
+title: "Georeferentierea imaginilor satelitare Google folosind QGIS si JOSM"
+authorid: "mateid"
+---
+	<p>Tutorialul prezintă posibilitățile de georeferențiere a imaginilor extrase din Google Earth folosind <span class="caps">QGIS</span> și încărcarea lor în editorul software <strong><span class="caps">JOSM</span></strong> în vederea verificării corectitudinii datelor din openStreetMap sau adăugării de date noi.</p>
+
+	<p>În ianuarie compania Google a decis să ofere gratuit licențe pentru Google Earth versiunea Pro (costau 399 <span class="caps">USD</span> înainte). </p>
+
+	<p>Pe lîngă diverse funcționalități suplimentare Google Earth Pro permite ceva extrem de util pentru cei care doresc să folosească imaginile satelitare în studiile lor: salvarea de imagini satelitare din Google Earth la rezoluție mare (4800 &#215; 2535). Această rezoluție a imaginilor salvate combinată cu calitatea imaginilor satelitare din Google Earth oferă o perspectivă cu totul nouă pentru aplicațiile <span class="caps">GIS</span>.</p>
+
+	<p>Tutorialul prezintă georeferențierea acestor imagini în vederea utilizării în <span class="caps">JOSM</span> pentru verificarea, corectarea sau adăugarea datelor în OpenStreetMap. În decembrie am mai adăugat două tutoriale despre folosirea <span class="caps">JOSM</span>: <a href="{{ site.base_url }}/tutoriale/adaugarea-i-editarea-datelor-in-openstreetmap-folosind-josm">Editarea cu <span class="caps">JOSM</span></a> și <a href="{{ site.base_url }}/tutoriale/adaugarea-i-editarea-datelor-in-openstreetmap-folosind-josm">Funcții <span class="caps">JOSM</span> Avansate</a></p>
+
+	<p>Pentru obținerea unei licențe de Google Earth Pro consultați <a href="https://support.google.com/earth/answer/176160?hl=en">pagina oficială</a> După instalarea acestuia și licențiere putem trece la extragerea și georeferențierea imaginilor.</p>
+
+	<p>Primul pas e salvarea imaginii din Google Earth. Din Google Earth putem folosi butonul Save Image sau meniul File&gt;Save&gt;Save Image (fig.) </p>
+
+	<p><a href="{{ site.image_base_url }}/3129.png"><img src="{{ site.image_base_url }}/3129t.png" title="Save Image" alt="Save Image" /></a></p>
+
+	<p>Atenție la alegerea rezoluției din toolbar de lîngă butonul Save Image, eu am ales-o pe cea maximă. Eu am ales și afișarea numelui străzilor dar e la latitudinea fiecăruia ce dorește să afișeze pe lîngă imaginea satelitară.</p>
+
+	<p>După salvarea imaginii trecem la georeferențierea folosind <span class="caps">QGIS</span>. Instalăm <span class="caps">QGIS</span> de pe <a href="https://www.qgis.org/en/site/forusers/download.html">site-ul oficial</a> și după instalarea și deschiderea acestuia trebuie să instalăm două pluginuri specifice georeferențierii.</p>
+
+	<p>Din meniul Plugins &gt; Manage and Install Plugins bifăm Georeferencer <span class="caps">GDAL</span> și Openlayers Plugin (fig.) și le instalăm.</p>
+
+	<p><a href="{{ site.image_base_url }}/3131.png"><img src="{{ site.image_base_url }}/3131t.png" title="Georeferencer Plugin" alt="Georeferencer Plugin" /></a></p>
+
+	<p>Openlayers Plugin permite adăugarea oricărui (aproape) tip de hartă online ca fundal în <span class="caps">QGIS</span>. Pentru a avea puncte de control la georeferențiere adăugăm harta <span class="caps">OSM</span> (fig.)</p>
+
+	<p><a href="{{ site.image_base_url }}/3132.png"><img src="{{ site.image_base_url }}/3132t.png" title="Harta Openlayers" alt="Harta Openlayers" /></a></p>
+
+	<p>După un zoom în <span class="caps">QGIS</span> vom vedea o hartă similară cu cea de pe <a href="http://www.openstreetmap.org">openstreetmap.org</a> în fundal. Deschidem pluginul Georeferencer din meniul Raster &gt; Georeferencer . Încărcăm în acesta imaginea aleasă de noi din Google Earth și alegem niște puncte de control (fig.). Folosind butonul &#8216;From Map Canvas&#8217; la alegerea punctelor de control putem alege punctele direct prin click pe fundalul <span class="caps">OSM</span>.</p>
+
+	<p><a href="{{ site.image_base_url }}/3133.png"><img src="{{ site.image_base_url }}/3133t.png" title="Puncte georeferentiere" alt="Puncte georeferentiere" /></a></p>
+
+	<p>După alegerea unui număr de puncte pe toată suprafața imaginii (cred că minimul e 4, eu de obicei aleg vreo 7) folosim butonul Start Georeferencing. Eu am ales Thin Plate Splines la transformare și am setat un nume al imaginii rezultate. La proiecție am scris &#8216;<span class="caps">EPSG</span>:3857&#8217; pentru că asta e proiecția folosită de OpenStreetMap.</p>
+
+	<p>După georeferențiere putem verifica imaginea direct în <span class="caps">QGIS</span>, de ex. folosind o transparență setată din Properties (fig.). Se suprapune bine?</p>
+
+	<p><a href="{{ site.image_base_url }}/3134.png"><img src="{{ site.image_base_url }}/3134t.png" title="Verificare georeferențiere" alt="Verificare georeferențiere" /></a></p>
+
+	<p>Acum avem o imagine georeferențiată corect în proiecția Pseudo Mercator folosită de <span class="caps">OSM</span>. Această imagine poate fi folosită deja în proiectele noastre.</p>
+
+	<p>În cazul de față eu am vrut să folosesc imaginea în <span class="caps">JOSM</span> pentru a verifica niște date din <span class="caps">OSM</span> și a identifica niște alei care nu sunt vizibile în alte imagini satelitare de rezoluție mai mică. <span class="caps">JOSM</span> nu permite decît încărcarea imaginilor de tip <span class="caps">JPEG</span> așa că va trebui să folosim pluginul <span class="caps">GDAL</span> Tools. În meniul Raster &gt; Conversion &gt;Translate (Convert Format) avem posibilitatea de a converti imaginea din GeoTiff în <span class="caps">JPEG</span>.</p>
+
+	<p>În cazul meu, la <span class="caps">QGIS</span> 2.0 formatul rezultat nu poate fi decît GeoTiff așa că a fost nevoie de un mic artificiu. Folosind butonul Edit (fig.) am modificat manual comanda <span class="caps">GDAL</span> pentru conversia imaginii. </p>
+
+	<p>Modificarea făcută a fost cea a formatului &#8216;-of <span class="caps">JPEG</span>&#8217; , a sistemului de coordonate pentru rezultat &#8216;-a_srs <span class="caps">EPSG</span>:3857&#8217; și a opțiunii de a crea un worldfile (necesar în <span class="caps">JOSM</span>) &#8216;-co <span class="caps">WORLDFILE</span>=yes&#8217; . Mai multe detalii în <a href="http://www.gdal.org/gdal_translate.html">documentația <span class="caps">GDAL</span></a></p>
+
+	<p><a href="{{ site.image_base_url }}/3135.png"><img src="{{ site.image_base_url }}/3135t.png" title="Export JPEG" alt="Export JPEG" /></a></p>
+
+	<p>După salvarea imaginii în format <span class="caps">JPEG</span> (am primit ceva eroare, am ignorat-o și imaginea a ieșit bine) trecem la <span class="caps">JOSM</span>.</p>
+
+	<p><span class="caps">JOSM</span> permite importul imaginilor georeferențiate în fundal folosind un plugin numit ImportImagePlugin care poate fi instalat din maniul Preferences &gt; Plugins (fig.) </p>
+
+	<p><a href="{{ site.image_base_url }}/3136.png"><img src="{{ site.image_base_url }}/3136t.png" title="ImportImagePlugin JOSM" alt="ImportImagePlugin JOSM" /></a></p>
+
+	<p>Folosind meniul Imagery &gt; Import Image am încărcat imaginea georeferențiată (cea în format .jpg) în <span class="caps">JOSM</span>. Am ales &#8216;<span class="caps">JOSM</span>&#8217;s current projection&#8217; din dialogul apărut pentru a folosi proiecția <span class="caps">EPSG</span>:3857 în care am exportat imaginea din <span class="caps">QGIS</span>.</p>
+
+	<p>După încărcarea imaginii în <span class="caps">JOSM</span> am încărcat și datele din OpenStreetMap peste (fig.). După cum se poate vedea în figură datele se suprapun bine și există posibilitatea de a extrage informații noi sau a verifica informațiile existente.</p>
+
+	<p><a href="{{ site.image_base_url }}/3137.png"><img src="{{ site.image_base_url }}/3137t.png" title="Imaginea în JOSM" alt="Imaginea în JOSM" /></a></p>
+
+	<p>Această procedură este foarte utilă mai ales în zonele unde ceilalți furnizori de imagini satelitare nu au date disponibile (în Bing era o bună bucată din județul Sălas pînă acum cîteva luni, de ex.) sau în zonele unde imaginea acestora nu e suficient de clară și cea de la Google e mai bună.</p>
+
+	<p>Ca o completare, pentru că probabil va apărea această nelămurire, din punctul meu de vedere o asemenea folosire a imaginilor nu încalcă <a href="https://developers.google.com/maps/terms">termenii de utilizare Google</a> . Folosirea datelor din Google pentru verificarea sau identificarea de noi obiecte în <span class="caps">OSM</span> ușurează mult procesul de editare a acestor date în diverse zone. Folosirea imaginilor georeferențiate în alte scopuri care nu contravin termenilor poate fi de asemenea foarte utilă.</p>
+
+
