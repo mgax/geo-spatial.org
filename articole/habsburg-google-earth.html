@@ -1,0 +1,19 @@
+---
+title: "Habsburg Google Earth "
+authorid: "gabor"
+time: 2014-04-10 22:46:42
+---
+	<p>A doua campanie de măsurători ale Imperiului Habsburgic este o adevărată opera cartografică a primei jumătăți a secolului 19. Scara la care au fost întocmite foile de hartă este 1:28.800, în sistem metric, astfel încât rezoluția lor este comparabilă cu cea a hărților militare moderne. Varianta online a colecției a fost publicată pe site-ul firmei maghiare Arcanum. În plus, compania a făcut un mare pas înainte: prin cooperarea cu Arhiva de Stat Austriacă, Viena (deținătorii datelor), Universitatea Eötvös Loránd din Budapesta (cei care au dezvoltat metoda de georeferențiere) și Arhiva Orașului Capitală Budapesta, măsurătorile sunt disponibile online acum (<a href="http://mapire.staatsarchiv.at">http://mapire.staatsarchiv.at</a>), din Lichtenstein până în Transilvania, din Milano pâna în ținutul central al Ucrainei, chiar și în 3 dimensiuni.</p>
+
+	<p>Originalul conține cca. 4000 de foi păstrate în arhiva din Viena în timp ce statele succesoare dețin doar copii ale propriilor teritorii. De ce este nevoie pentru a le reînvia, de exemplu, în 2 sau 3 dimensiuni cu Google Earth pe fundal? Pe scurt, de scanare, georeferențiere și publicare pe internet. Toți acești pași au frumusețea lor însă și dificultățile lor.</p>
+
+	<p>Principala dificultate a scanării este cantitatea. 4000 de foi de hârtie, de 65 cu 45 de centimetri, stocați în arhive timp de mulți ani. Timp de câteva săptămâni, specialiștii de la Arcanum le-au scanat și procesat, obținând imagini în format <span class="caps">JPG</span> sau <span class="caps">TIFF</span>. În următorul pas, acestea ar trebui drapate peste Google Earth deoarece conținutul istoric al hărților acoperă precis peisajul actual. Acest proces se numește georeferențiere sau rectificare. Procesul a fost dezvoltat de colegii de la Departamentul de Geofizică și Ştiințe spațiale de la Universitatea Eötvös (<a href="http://mapire.staatsarchiv.at/mkf_booklet.pdf">http://mapire.staatsarchiv.at/mkf_booklet.pdf</a>). Prin aplicarea acestei metode, căutarea obositoare a punctelor identice ar fi putut fi evitată. După definirea corectă a sistemului de coordonate ales, s-au dat coordonatele celor 4 colțuri ale fiecărei foi de hartă. Acuratețea orizontală rezultată este în jurul a 40 de metri în cele mai multe părți ale Imperiului, totuși, câteva locuri, cum ar fi Tyrol, Slazburg și zona Banatului sunt marcate de o precizie de câteva sute de metri. Următorul algoritm, mult mai precis, va fi capabil să rezolve această eroare în curând.</p>
+
+	<p>După resample și georeferențiere, imaginile sunt publicate cu OpenLayers. În primul rând, după selectarea regiunii de interes, un mozaic bidimensional al foilor vechi este publicat având ca suport OpenStreetMap. Pe lângă zoom in/out și paning și opacitatea poate fi setată; serviciul este unul în timp real care ne permite compararea peisajului istoric cu cel actual. Cu o singură apăsare de buton, se ajunge la Google Earth. Aici, vechile hărți apar în 3 dimensiuni; putem să admirăm frumusețea Alpilor, coasta și insulele Mării Adriatice precum și  munții din Transilvania. Relieful e generat pe baza modelului <span class="caps">SRTM</span>.</p>
+
+	<p><img src="{{ site.image_base_url }}/3080.jpg" alt="" /></p>
+
+	<p>Combinația tehnologiei spațiale și a soluțiilor tehnice specifice începutului de secol 19, este validată prin transformări de coordonate precise.<br />
+Acesta este doar primul pas al proiectului (Mapire &#8211; Hărțile istorice ale Imperiului Habsburgic); partenerii plănuiesc să publice mai mult material cartografic similat, bazat pe aceeași tehnologie. Aceste informații  vor fi anunțate inclusiv pe <a href="http://geo-spatial.org">geo-spatial.org</a>.</p>
+
+
