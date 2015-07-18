@@ -1,4 +1,5 @@
 base_url: ""
+image_base_url: "http://www.geo-spatial.org/images"
 defaults:
   - scope: {path: ""}
     values:
