@@ -24,11 +24,13 @@ authorid: "alex"
 
 	<h3 id="filtru-după-tag">filtru după tag</h3>
 
+{% raw %}
 <pre><code>node
   [amenity=cafe]
   ({{bbox}});
 out;
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/amenity=cafe.png" title="amenity=cafe" alt="amenity=cafe" /></p>
 
@@ -38,12 +40,14 @@ out;
 
 	<h3 id="query-și">query &#8220;și&#8221;</h3>
 
+{% raw %}
 <pre><code>node
   [amenity=cafe]
   [wheelchair=yes]
   ({{bbox}});
 out;
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/amenity=cafe,wheelchair=yes.png" title="amenity=cafe,wheelchair=yes" alt="amenity=cafe,wheelchair=yes" /></p>
 
@@ -51,6 +55,7 @@ out;
 
 	<h3 id="query-sau">query &#8220;sau&#8221;</h3>
 
+{% raw %}
 <pre><code>(
   node
     [amenity=cafe]
@@ -61,6 +66,7 @@ out;
 );
 out;
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/amenity=cafe+tourism=hotel.png" title="amenity=cafe+tourism=hotel" alt="amenity=cafe+tourism=hotel" /></p>
 
@@ -68,11 +74,13 @@ out;
 
 	<h3 id="expresie-regulată">expresie regulată</h3>
 
+{% raw %}
 <pre><code>node
   [amenity~&quot;cafe|bar|restaurant&quot;]
   ({{bbox}});
 out;
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/amenity~&amp;#34;cafe&amp;#124;bar&amp;#124;restaurant&amp;#34;.png" title="amenity~"cafe&#124;bar&#124;restaurant"" alt="amenity~"cafe&#124;bar&#124;restaurant"" /></p>
 
@@ -80,12 +88,14 @@ out;
 
 	<h3 id="query-tot">query &#8220;tot&#8221;</h3>
 
+{% raw %}
 <pre><code>(
   node({{bbox}});
   &lt;;
 );
 out meta;
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/all.png" title="toată informația din zonă" alt="toată informația din zonă" /></p>
 
@@ -93,10 +103,12 @@ out meta;
 
 	<h3 id="query-unde-sunt">query &#8220;unde sunt?&#8221;</h3>
 
+{% raw %}
 <pre><code>[out:json];
 is_in({{center}});
 out;
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/where.png" title="unde mă aflu?" alt="unde mă aflu?" /></p>
 
@@ -104,7 +116,7 @@ out;
 
 	<h2 id="regiuni">Regiuni</h2>
 
-	<p>Până acum, toate query-urile noastre au fost limitate la <code>{{bbox}}</code>, regiunea vizibilă din hartă. Mai departe vom folosi poligoanele <a href="http://wiki.openstreetmap.org/wiki/Key:place">place</a> (localități, regiuni) pentru a defini limite geografice.</p>
+	<p>Până acum, toate query-urile noastre au fost limitate la {% raw %}<code>{{bbox}}</code>{% endraw %}, regiunea vizibilă din hartă. Mai departe vom folosi poligoanele <a href="http://wiki.openstreetmap.org/wiki/Key:place">place</a> (localități, regiuni) pentru a defini limite geografice.</p>
 
 	<h3 id="query-după-numele-unui-loc">query după numele unui loc</h3>
 
@@ -205,6 +217,7 @@ out center;
 
 	<h3 id="cafenele-pub-uri">Cafenele, pub-uri</h3>
 
+{% raw %}
 <pre><code>area[place=city][name=&quot;Cluj-Napoca&quot;];
 </code>
 <code>node[amenity~&quot;^cafe|pub$&quot;](area);
@@ -216,6 +229,7 @@ out;
   node[amenity=pub] { color: green; fill-color: green; }
 }}
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-cafe-pub.png" title="Cafenele și pub-uri" alt="Cafenele și pub-uri" /></p>
 
@@ -227,6 +241,7 @@ out;
 
 	<h3 id="linie-de-autobuz">Linie de autobuz</h3>
 
+{% raw %}
 <pre><code>area[place=city][name=&quot;Cluj-Napoca&quot;];
 </code>
 <code>(
@@ -245,6 +260,7 @@ out;
   }
 }}
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-bus27.png" title="Autobuzul 27, simbolizat" alt="Autobuzul 27, simbolizat" /></p>
 
@@ -254,6 +270,7 @@ out;
 
 	<h3 id="rețeaua-de-înaltă-tensiune">Rețeaua de înaltă tensiune</h3>
 
+{% raw %}
 <pre><code>area[name=&quot;România&quot;];
 </code>
 <code>way
@@ -276,6 +293,7 @@ out geom;
   { color:green; fill-color: green; }
 }}
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-power.png" title="Linii de înaltă tensiune" alt="Linii de înaltă tensiune" /></p>
 
@@ -287,6 +305,7 @@ out geom;
 
 	<h3 id="localități-după-tip-șimărime">Localități după tip și mărime</h3>
 
+{% raw %}
 <pre><code>area[place=county][name=&quot;Cluj&quot;];
 </code>
 <code>node(area)[place~&quot;city|town|village&quot;];
@@ -302,6 +321,7 @@ out;
   node[place=city] { color: red; }
 }}
 </code></pre>
+{% endraw %}
 
 	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-places.png" title="Localități" alt="Localități" /></p>
 
