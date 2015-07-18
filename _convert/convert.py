@@ -36,7 +36,7 @@ def export(slug):
         .replace('http://www.geo-spatial.org',
                  '{{ site.base_url }}')
     )
-    with open('article/' + slug + '.html', 'wb') as f:
+    with open('articole/' + slug + '.html', 'wb') as f:
         f.write('---\n')
         f.write('title: ' + json.dumps(article.title) + '\n')
         f.write('authorid: ' + json.dumps(article.authorid) + '\n')
