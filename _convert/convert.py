@@ -40,6 +40,7 @@ def export(slug):
         f.write('---\n')
         f.write('title: ' + json.dumps(article.title) + '\n')
         f.write('authorid: ' + json.dumps(article.authorid) + '\n')
+        f.write('time: ' + str(article.posted) + '\n')
         f.write('---\n')
         f.write(html.encode('utf-8'))
         f.write('\n')
