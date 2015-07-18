@@ -6,7 +6,7 @@ authorid: "alex"
 
 	<p>Vom folosi serviciul <a href="http://wiki.openstreetmap.org/wiki/Overpass_API">Overpass <span class="caps">API</span></a>, un motor de interogare pentru baza de date OpenStreetMap. Overpass este un serviciu web pentru aplicații, de aceea nu îl vom folosi direct, ci vom executa căutări prin interfața grafică <a href="http://overpass-turbo.eu/">Overpass Turbo</a>.</p>
 
-	<p><img src="http://www.geo-spatial.org/screenshots/overpass.png" title="overpass" alt="overpass" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/overpass.png" title="overpass" alt="overpass" /></p>
 
 	<h2 id="reprezentarea-datelor-în-openstreetmap">Reprezentarea datelor în OpenStreetMap</h2>
 
@@ -32,7 +32,7 @@ out;
 </code></pre>
 {% endraw %}
 
-	<p><img src="http://www.geo-spatial.org/screenshots/amenity=cafe.png" title="amenity=cafe" alt="amenity=cafe" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/amenity=cafe.png" title="amenity=cafe" alt="amenity=cafe" /></p>
 
 	<p>În tab-ul &#8220;data&#8221; din dreapta putem vedea rezultatul în format OpenStreetMap <span class="caps">XML</span>.</p>
 
@@ -49,7 +49,7 @@ out;
 </code></pre>
 {% endraw %}
 
-	<p><img src="http://www.geo-spatial.org/screenshots/amenity=cafe,wheelchair=yes.png" title="amenity=cafe,wheelchair=yes" alt="amenity=cafe,wheelchair=yes" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/amenity=cafe,wheelchair=yes.png" title="amenity=cafe,wheelchair=yes" alt="amenity=cafe,wheelchair=yes" /></p>
 
 	<p><strong>Exercițiu</strong>: extrageți spitalele care au cameră de gardă (<code>emergency=yes</code>).</p>
 
@@ -68,7 +68,7 @@ out;
 </code></pre>
 {% endraw %}
 
-	<p><img src="http://www.geo-spatial.org/screenshots/amenity=cafe+tourism=hotel.png" title="amenity=cafe+tourism=hotel" alt="amenity=cafe+tourism=hotel" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/amenity=cafe+tourism=hotel.png" title="amenity=cafe+tourism=hotel" alt="amenity=cafe+tourism=hotel" /></p>
 
 	<p><strong>Exercițiu</strong>: extrageți toate <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dcafe">cafenelele</a>, <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dbar">barurile</a>, <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpub">pub-urile</a> și <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dnightclub">cluburile</a>.</p>
 
@@ -82,7 +82,7 @@ out;
 </code></pre>
 {% endraw %}
 
-	<p><img src="http://www.geo-spatial.org/screenshots/amenity~&amp;#34;cafe&amp;#124;bar&amp;#124;restaurant&amp;#34;.png" title="amenity~"cafe&#124;bar&#124;restaurant"" alt="amenity~"cafe&#124;bar&#124;restaurant"" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/amenity~&amp;#34;cafe&amp;#124;bar&amp;#124;restaurant&amp;#34;.png" title="amenity~"cafe&#124;bar&#124;restaurant"" alt="amenity~"cafe&#124;bar&#124;restaurant"" /></p>
 
 	<p><strong>Exercițiu</strong>: La fel ca punctul precedent, scris sub formă de expresie regulată</p>
 
@@ -97,7 +97,7 @@ out meta;
 </code></pre>
 {% endraw %}
 
-	<p><img src="http://www.geo-spatial.org/screenshots/all.png" title="toată informația din zonă" alt="toată informația din zonă" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/all.png" title="toată informația din zonă" alt="toată informația din zonă" /></p>
 
 	<p>Returnează toate datele din regiunea vizibilă. Operatorul <code>&lt;;</code> înseamnă &#8220;ia obiectele părinte&#8221; (poligoane și relații care conțin noduri din zonă)</p>
 
@@ -128,7 +128,7 @@ out;
 out;
 </code></pre>
 
-	<p><img src="http://www.geo-spatial.org/screenshots/place=city,name=&amp;#34;Cluj-Napoca&amp;#34;.png" title="Poligon Cluj" alt="Poligon Cluj" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/place=city,name=&amp;#34;Cluj-Napoca&amp;#34;.png" title="Poligon Cluj" alt="Poligon Cluj" /></p>
 
 	<ul>
 		<li><code>&gt;;</code> înseamnă &#8220;ia obiectele copil&#8221; (nodurile care formează poligonul)</li>
@@ -146,7 +146,7 @@ out;
 out;
 </code></pre>
 
-	<p><img src="http://www.geo-spatial.org/screenshots/cluj-amenity=cafe.png" title="Cafenele din Cluj" alt="Cafenele din Cluj" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/cluj-amenity=cafe.png" title="Cafenele din Cluj" alt="Cafenele din Cluj" /></p>
 
 	<p>Definim <code>area</code> ca limitele orașului Cluj și îl folosim ca filtru spațial pentru noduri.</p>
 
@@ -165,7 +165,7 @@ out;
 out;
 </code></pre>
 
-	<p><img src="http://www.geo-spatial.org/screenshots/cluj-leisure=park.png" title="Parcuri din Cluj" alt="Parcuri din Cluj" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/cluj-leisure=park.png" title="Parcuri din Cluj" alt="Parcuri din Cluj" /></p>
 
 	<p>Căutăm obiecte de tip &#8220;way&#8221; poligoane care au tag <code>leisure=park</code>.</p>
 
@@ -187,7 +187,7 @@ out;
 out;
 </code></pre>
 
-	<p><img src="http://www.geo-spatial.org/screenshots/cluj-route=bus,ref=27.png" title="Autobuzul 27" alt="Autobuzul 27" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/cluj-route=bus,ref=27.png" title="Autobuzul 27" alt="Autobuzul 27" /></p>
 
 	<p>Plecând de la relația <code>[route=bus][ref=27]</code>, cerem toate obiectele copil (way-uri și noduri, adică traseul și stațiile).</p>
 
@@ -203,7 +203,7 @@ out;
 out center;
 </code></pre>
 
-	<p><img src="http://www.geo-spatial.org/screenshots/cluj-leisure=park-center.png" title="Centrele parcurilor din Cluj" alt="Centrele parcurilor din Cluj" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/cluj-leisure=park-center.png" title="Centrele parcurilor din Cluj" alt="Centrele parcurilor din Cluj" /></p>
 
 	<p>Nu mai cerem elementele copil de la poligoane (nodurile de pe contur), vrem doar centrele.</p>
 
@@ -231,7 +231,7 @@ out;
 </code></pre>
 {% endraw %}
 
-	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-cafe-pub.png" title="Cafenele și pub-uri" alt="Cafenele și pub-uri" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/mapcss-cafe-pub.png" title="Cafenele și pub-uri" alt="Cafenele și pub-uri" /></p>
 
 	<p>Prima regulă de <span class="caps">CSS</span> spune că toate simbolurile au rază 8. Următoarele două colorează simbolurile în funcție de tag-uri.</p>
 
@@ -262,7 +262,7 @@ out;
 </code></pre>
 {% endraw %}
 
-	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-bus27.png" title="Autobuzul 27, simbolizat" alt="Autobuzul 27, simbolizat" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/mapcss-bus27.png" title="Autobuzul 27, simbolizat" alt="Autobuzul 27, simbolizat" /></p>
 
 	<p>Ascundem toate nodurile, mai puțin cele care fac parte din relație, și sunt marcate ca stație.</p>
 
@@ -295,7 +295,7 @@ out geom;
 </code></pre>
 {% endraw %}
 
-	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-power.png" title="Linii de înaltă tensiune" alt="Linii de înaltă tensiune" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/mapcss-power.png" title="Linii de înaltă tensiune" alt="Linii de înaltă tensiune" /></p>
 
 	<p>Linii de înaltă tensiune (110kV, 220kV și 400kV). Expresia regulată filtrează liniile care au 3 cifre urmate de 3 zero-uri.</p>
 
@@ -323,7 +323,7 @@ out;
 </code></pre>
 {% endraw %}
 
-	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-places.png" title="Localități" alt="Localități" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/mapcss-places.png" title="Localități" alt="Localități" /></p>
 
 	<p>Cuoarea reprezintă tipul localității, mărimea reprezintă populația.</p>
 
@@ -337,7 +337,7 @@ out;
 
 	<p>După ce am rulat un query în Overpass Turbo putem exporta rezultatul în format GeoJSON din meniul &#8220;Export&#8221;. Putem vizualiza și modifica fișierul exportat prin serviciul <a href="http://geojson.io">geojson.io</a> .</p>
 
-	<p><img src="http://www.geo-spatial.org/screenshots/geojson.io.png" title="Fișier deschis în geojson.io" alt="Fișier deschis în geojson.io" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/geojson.io.png" title="Fișier deschis în geojson.io" alt="Fișier deschis în geojson.io" /></p>
 
 	<p><strong>Exercițiu</strong>: Rulați un query din exercțiile anterioare, salvați rezultatul ca GeoJSON, și încarcați-l în geojson.io.</p>
 
@@ -347,7 +347,7 @@ out;
 
 	<p><a href="https://github.com/mgax/workshop-geocj2015-overpass/blob/master/cafes.html">cafes.html</a></p>
 
-	<p><img src="http://www.geo-spatial.org/screenshots/leaflet-cafes.png" title="Cafenele în Leaflet" alt="Cafenele în Leaflet" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/leaflet-cafes.png" title="Cafenele în Leaflet" alt="Cafenele în Leaflet" /></p>
 
 	<p><strong>Exercițiu</strong>: Salvați local fișierul <span class="caps">HTML</span> și deschideți-l în browser. Înlocuiți query-ul cu diverse query-uri din exercițiile anterioare.</p>
 
@@ -355,4 +355,4 @@ out;
 
 	<p><a href="https://www.qgis.org"><span class="caps">QGIS</span></a> deschide fișiere GeoJSON ca vector layer. Dacă vrem să verificăm poziția datelor, putem instala plugin-ul &#8220;OpenLayers Plugin&#8221;, și din menul &#8220;web &gt; OpenLayers Plugin&#8221;, alegem o hartă ca background. Proiecția proiectului curent va deveni &#8220;<span class="caps">EPSG</span>:3857&#8221;  &#8211;  Web Mercator  &#8211;  proiecția folosită de majoritatea slippy map-urilor.</p>
 
-	<p><img src="http://www.geo-spatial.org/screenshots/qgis-cafes.png" title="Cafenele în QGIS" alt="Cafenele în QGIS" /></p>
+	<p><img src="{{ site.base_url }}/screenshots/qgis-cafes.png" title="Cafenele în QGIS" alt="Cafenele în QGIS" /></p>
