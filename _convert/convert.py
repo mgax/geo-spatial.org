@@ -29,13 +29,17 @@ session = Session()
 
 def export(slug):
     article = session.query(Article).filter_by(url_title=slug).one()
-    print article.body_html
+    html = article.body_html.replace(
+        'http://www.geo-spatial.org',
+        '{{ site.base_url }}',
+    )
     with open('article/' + slug + '.html', 'wb') as f:
         f.write('---\n')
         f.write('title: ' + json.dumps(article.title) + '\n')
         f.write('authorid: ' + json.dumps(article.authorid) + '\n')
         f.write('---\n')
-        f.write(article.body_html.encode('utf-8'))
+        f.write(html.encode('utf-8'))
+        f.write('\n')
 
 
 export(sys.argv[1])
