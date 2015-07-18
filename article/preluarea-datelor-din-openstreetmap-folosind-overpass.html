@@ -1,0 +1,338 @@
+---
+title: "Preluarea datelor din OpenStreetMap folosind Overpass"
+authorid: "alex"
+---
+	<p>Baza de date OpenStreetMap conține o varietate și cantiate imensă de informații spațiale, actualizate de voluntari, și disponibile sub o licență liberă. În acest articol vedem cum putem prelua date din OpenStreetMap filtrând exact ce avem nevoie.</p>
+
+	<p>Vom folosi serviciul <a href="http://wiki.openstreetmap.org/wiki/Overpass_API">Overpass <span class="caps">API</span></a>, un motor de interogare pentru baza de date OpenStreetMap. Overpass este un serviciu web pentru aplicații, de aceea nu îl vom folosi direct, ci vom executa căutări prin interfața grafică <a href="http://overpass-turbo.eu/">Overpass Turbo</a>.</p>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/overpass.png" title="overpass" alt="overpass" /></p>
+
+	<h2 id="reprezentarea-datelor-în-openstreetmap">Reprezentarea datelor în OpenStreetMap</h2>
+
+	<p>Datele spațiale, în mod normal, sunt reprezentate folosind câteva tipuri de geometrie standard: punct, linie, poligon, multipoligon, etc. În OpenStreetMap datele sunt reprezentate altfel: <a href="http://wiki.openstreetmap.org/wiki/Elements">node, way, relation</a>.</p>
+
+	<ul>
+		<li><em>Node</em> reprezintă un punct în spațiu cu coordonate &#8220;latitudine&#8221; și &#8220;longitudine&#8221; (WGS84). Poate fi un obiectiv de sine stătător, cum ar fi un stâlp de înaltă tensiune, sau poate fi parte dintr-un <em>way</em>.</li>
+		<li><em>Way</em> este o listă de obiecte <em>node</em> și poate reprezenta o linie (de exemplu o șosea) sau un inel închis (de exemplu o clădire).</li>
+		<li><em>Relation</em> este o colecție de <em>node</em>, <em>way</em> și <em>relation</em>, și reprezintă obiecte mai complexe. De exemplu, o șosea compusă din mai multe segmente lipite, o clădire cu o curte interioară, sau traseul unui autobuz, unde drumul e reprezentat prin <em>way</em>-uri și stațiile sunt reprezentate prin <em>node</em>-uri).</li>
+	</ul>
+
+	<p>Orice obiect (<em>node</em>, <em>way</em>, <em>relation</em>) poate avea <a href="http://wiki.openstreetmap.org/wiki/Tags">tag-uri</a> atașate. Tag-urile ne spun ce reprezintă acel obiect. De exemplu, un stâlp de înaltă tensiune va avea tag-ul <a href="http://wiki.openstreetmap.org/wiki/Tag:power%3Dtower">power=tower</a> (cheia <code>power</code> și valoarea <code>tower</code>). Aceleași noduri pot face parte dintr-un <em>way</em> care reprezintă o linie de înaltă tensiune și care va avea tag-ul <a href="http://wiki.openstreetmap.org/wiki/Tag:power%3Dline">power=line</a>. Linia poate avea alte tag-uri, de exemplu <a href="http://wiki.openstreetmap.org/wiki/Key:voltage">voltage=</a> 400000, pentru linii de 400KV. Tag-urile sunt documentate pe wiki-ul OpenStreetMap în secțiunea <a href="http://wiki.openstreetmap.org/wiki/Map_Features">Map Features</a>. Ne vom folosi de aceste tag-uri ca să filtrăm datele care ne interesează.</p>
+
+	<h2 id="filtrare">Filtrare</h2>
+
+	<h3 id="filtru-după-tag">filtru după tag</h3>
+
+<pre><code>node
+  [amenity=cafe]
+  ({{bbox}});
+out;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/amenity=cafe.png" title="amenity=cafe" alt="amenity=cafe" /></p>
+
+	<p>În tab-ul &#8220;data&#8221; din dreapta putem vedea rezultatul în format OpenStreetMap <span class="caps">XML</span>.</p>
+
+	<p><strong>Exercițiu</strong>: extrageți <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Drestaurant">restaurantele</a>, <a href="http://wiki.openstreetmap.org/wiki/Tag:tourism%3Dhotel">hotelurile</a> și <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dhospital">spitalele</a> din zonă.</p>
+
+	<h3 id="query-și">query &#8220;și&#8221;</h3>
+
+<pre><code>node
+  [amenity=cafe]
+  [wheelchair=yes]
+  ({{bbox}});
+out;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/amenity=cafe,wheelchair=yes.png" title="amenity=cafe,wheelchair=yes" alt="amenity=cafe,wheelchair=yes" /></p>
+
+	<p><strong>Exercițiu</strong>: extrageți spitalele care au cameră de gardă (<code>emergency=yes</code>).</p>
+
+	<h3 id="query-sau">query &#8220;sau&#8221;</h3>
+
+<pre><code>(
+  node
+    [amenity=cafe]
+    ({{bbox}});
+  node
+    [tourism=hotel]
+    ({{bbox}});
+);
+out;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/amenity=cafe+tourism=hotel.png" title="amenity=cafe+tourism=hotel" alt="amenity=cafe+tourism=hotel" /></p>
+
+	<p><strong>Exercițiu</strong>: extrageți toate <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dcafe">cafenelele</a>, <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dbar">barurile</a>, <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpub">pub-urile</a> și <a href="http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dnightclub">cluburile</a>.</p>
+
+	<h3 id="expresie-regulată">expresie regulată</h3>
+
+<pre><code>node
+  [amenity~&quot;cafe|bar|restaurant&quot;]
+  ({{bbox}});
+out;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/amenity~&amp;#34;cafe&amp;#124;bar&amp;#124;restaurant&amp;#34;.png" title="amenity~"cafe&#124;bar&#124;restaurant"" alt="amenity~"cafe&#124;bar&#124;restaurant"" /></p>
+
+	<p><strong>Exercițiu</strong>: La fel ca punctul precedent, scris sub formă de expresie regulată</p>
+
+	<h3 id="query-tot">query &#8220;tot&#8221;</h3>
+
+<pre><code>(
+  node({{bbox}});
+  &lt;;
+);
+out meta;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/all.png" title="toată informația din zonă" alt="toată informația din zonă" /></p>
+
+	<p>Returnează toate datele din regiunea vizibilă. Operatorul <code>&lt;;</code> înseamnă &#8220;ia obiectele părinte&#8221; (poligoane și relații care conțin noduri din zonă)</p>
+
+	<h3 id="query-unde-sunt">query &#8220;unde sunt?&#8221;</h3>
+
+<pre><code>[out:json];
+is_in({{center}});
+out;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/where.png" title="unde mă aflu?" alt="unde mă aflu?" /></p>
+
+	<p>Returnează toate poligoanele care conțin centrul hărții vizibile (clădiri, teren, regiuni administrative). Am cerut rezultatele în format <span class="caps">JSON</span> ca să fie mai ușor de citit.</p>
+
+	<h2 id="regiuni">Regiuni</h2>
+
+	<p>Până acum, toate query-urile noastre au fost limitate la <code>{{bbox}}</code>, regiunea vizibilă din hartă. Mai departe vom folosi poligoanele <a href="http://wiki.openstreetmap.org/wiki/Key:place">place</a> (localități, regiuni) pentru a defini limite geografice.</p>
+
+	<h3 id="query-după-numele-unui-loc">query după numele unui loc</h3>
+
+<pre><code>relation
+  [place=city]
+  [name=&quot;Cluj-Napoca&quot;];
+</code>
+<code>&gt;;
+out;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/place=city,name=&amp;#34;Cluj-Napoca&amp;#34;.png" title="Poligon Cluj" alt="Poligon Cluj" /></p>
+
+	<ul>
+		<li><code>&gt;;</code> înseamnă &#8220;ia obiectele copil&#8221; (nodurile care formează poligonul)</li>
+	</ul>
+
+	<p><strong>Exercițiu</strong>: extrageți conturul altor localități.</p>
+
+	<h3 id="limită-query-la-o-regiune">limită query la o regiune</h3>
+
+<pre><code>area[place=city][name=&quot;Cluj-Napoca&quot;];
+</code>
+<code>node
+  [amenity=cafe]
+  (area);
+out;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/cluj-amenity=cafe.png" title="Cafenele din Cluj" alt="Cafenele din Cluj" /></p>
+
+	<p>Definim <code>area</code> ca limitele orașului Cluj și îl folosim ca filtru spațial pentru noduri.</p>
+
+	<p><strong>Exercițiu</strong>: extrageți hotelurile din Cluj.</p>
+
+	<h3 id="zone">zone</h3>
+
+<pre><code>area[place=city][name=&quot;Cluj-Napoca&quot;];
+</code>
+<code>(
+  way
+    [leisure=park]
+    (area);
+  &gt;;
+);
+out;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/cluj-leisure=park.png" title="Parcuri din Cluj" alt="Parcuri din Cluj" /></p>
+
+	<p>Căutăm obiecte de tip &#8220;way&#8221; poligoane care au tag <code>leisure=park</code>.</p>
+
+	<p>Multe din rezultatele care apar ca puncte sunt de fapt poligoane, dar sunt afișate ca puncte, din cauza simplificărilor făcute de viewer-ul din Overpass Turbo. Datele exportate vor fi de tip poligon.</p>
+
+	<p><strong>Exercițiu</strong>: extrageți și grădinile (<code>leisure=garden</code>) în același query.</p>
+
+	<h3 id="structuri-complexe">structuri complexe</h3>
+
+<pre><code>area[place=city][name=&quot;Cluj-Napoca&quot;];
+</code>
+<code>(
+  relation
+    [route=bus]
+    [ref=27]
+    (area);
+  &gt;;
+);
+out;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/cluj-route=bus,ref=27.png" title="Autobuzul 27" alt="Autobuzul 27" /></p>
+
+	<p>Plecând de la relația <code>[route=bus][ref=27]</code>, cerem toate obiectele copil (way-uri și noduri, adică traseul și stațiile).</p>
+
+	<p><strong>Exercițiu</strong>: extrageți magistrala de metrou <a href="http://www.openstreetmap.org/relation/2947020">M2</a> din București.</p>
+
+	<h3 id="centrele-poligoanelor">centrele poligoanelor</h3>
+
+<pre><code>area[place=city][name=&quot;Cluj-Napoca&quot;];
+</code>
+<code>way
+  [leisure=park]
+  (area);
+out center;
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/cluj-leisure=park-center.png" title="Centrele parcurilor din Cluj" alt="Centrele parcurilor din Cluj" /></p>
+
+	<p>Nu mai cerem elementele copil de la poligoane (nodurile de pe contur), vrem doar centrele.</p>
+
+	<p><strong>Exercițiu</strong>: extrageți centrele aeroporturilor din România (poligoane <code>aeroway=aerodrome</code>).</p>
+
+	<p><strong>Exercițiu</strong>: extrageți centrele localităților din județul Timișoara (<code>[place~&quot;city|town|village&quot;]</code>). Nu uitați să modificați și <code>area</code> de căutare.</p>
+
+	<h2 id="simbolizare">Simbolizare</h2>
+
+	<p>Overpass Turbo (interfața de rulat query-uri și vizualizat rezultate) poate să simbolizeze rezultatul conform unor reguli definite de noi. Sintaxa, MapCSS, este <a href="http://wiki.openstreetmap.org/wiki/Overpass_turbo/MapCSS">explicată pe wiki</a>.</p>
+
+	<h3 id="cafenele-pub-uri">Cafenele, pub-uri</h3>
+
+<pre><code>area[place=city][name=&quot;Cluj-Napoca&quot;];
+</code>
+<code>node[amenity~&quot;^cafe|pub$&quot;](area);
+out;
+</code>
+<code>{{style:
+  node { symbol-size: 8; }
+  node[amenity=cafe] { color: blue; fill-color: blue; }
+  node[amenity=pub] { color: green; fill-color: green; }
+}}
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-cafe-pub.png" title="Cafenele și pub-uri" alt="Cafenele și pub-uri" /></p>
+
+	<p>Prima regulă de <span class="caps">CSS</span> spune că toate simbolurile au rază 8. Următoarele două colorează simbolurile în funcție de tag-uri.</p>
+
+	<p>La expresia regulată am adăugat regulile <code>^</code> și <code>$</code> (început și sfârșit de text), ca să primim rezultate exacte <code>pub</code> și <code>cafe</code>, fără rezultate de tipul <code>amenity=public_building</code>, care conțin în parte expresia căutată.</p>
+
+	<p><strong>Exercițiu</strong>: simbolizați spitalele din Cluj. Cele care au cameră de gardă să fie colorate cu roșu, restul albastru.</p>
+
+	<h3 id="linie-de-autobuz">Linie de autobuz</h3>
+
+<pre><code>area[place=city][name=&quot;Cluj-Napoca&quot;];
+</code>
+<code>(
+  relation
+    [route=bus]
+    [ref=27]
+    (area);
+  &gt;;
+);
+out;
+</code>
+<code>{{style:
+  node { symbol-shape: none; }
+  relation node[public_transport=stop_position] {
+    symbol-shape: circle; symbol-size: 5;
+  }
+}}
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-bus27.png" title="Autobuzul 27, simbolizat" alt="Autobuzul 27, simbolizat" /></p>
+
+	<p>Ascundem toate nodurile, mai puțin cele care fac parte din relație, și sunt marcate ca stație.</p>
+
+	<p><strong>Exercițiu</strong>: simbolizați magistrala de metrou M2 din București.</p>
+
+	<h3 id="rețeaua-de-înaltă-tensiune">Rețeaua de înaltă tensiune</h3>
+
+<pre><code>area[name=&quot;România&quot;];
+</code>
+<code>way
+  (area)
+  [power=line]
+  [voltage~&quot;...000&quot;];
+out geom;
+</code>
+<code>{{style:
+  node[voltage=400000],
+  line[voltage=400000]
+  { color:red; fill-color: red; }
+</code>
+<code>  node[voltage=220000],
+  line[voltage=220000]
+  { color:blue; fill-color: blue; }
+</code>
+<code>  node[voltage=110000],
+  line[voltage=110000]
+  { color:green; fill-color: green; }
+}}
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-power.png" title="Linii de înaltă tensiune" alt="Linii de înaltă tensiune" /></p>
+
+	<p>Linii de înaltă tensiune (110kV, 220kV și 400kV). Expresia regulată filtrează liniile care au 3 cifre urmate de 3 zero-uri.</p>
+
+	<p>Din cauza simplificărilor făcute de Overpass Turbo, la zoom out, unele segmente de linie sunt reprezentate ca noduri, de aceea regulile de simbolizare operează și pe noduri și pe linii.</p>
+
+	<p><strong>Exercițiu</strong>: simbolizați rețeaua de autostrăzi (<code>highway=motorway</code>) din România și colorați fiecare autostradă (A1, A2&#8230;) diferit.</p>
+
+	<h3 id="localități-după-tip-șimărime">Localități după tip și mărime</h3>
+
+<pre><code>area[place=county][name=&quot;Cluj&quot;];
+</code>
+<code>node(area)[place~&quot;city|town|village&quot;];
+out;
+</code>
+<code>{{style:
+  node { symbol-size: 2; }
+  node[population&gt;100] { symbol-size: 4; }
+  node[population&gt;10000] { symbol-size: 8; }
+  node[population&gt;100000] { symbol-size: 12; }
+  node[place=village] { color: brown; }
+  node[place=town] { color: blue; }
+  node[place=city] { color: red; }
+}}
+</code></pre>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/mapcss-places.png" title="Localități" alt="Localități" /></p>
+
+	<p>Cuoarea reprezintă tipul localității, mărimea reprezintă populația.</p>
+
+	<p><strong>Exercițiu</strong>: simbolizați localitățile din alt județ.</p>
+
+	<h2 id="export">Export</h2>
+
+	<p>Putem salva rezultatele unui query în format GeoJSON. Alternativ, putem construi o hartă care, la fiecare încărcare, execută un query Overpass și afișează rezultatele.</p>
+
+	<h3 id="export-geojson">Export GeoJSON</h3>
+
+	<p>După ce am rulat un query în Overpass Turbo putem exporta rezultatul în format GeoJSON din meniul &#8220;Export&#8221;. Putem vizualiza și modifica fișierul exportat prin serviciul <a href="http://geojson.io">geojson.io</a> .</p>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/geojson.io.png" title="Fișier deschis în geojson.io" alt="Fișier deschis în geojson.io" /></p>
+
+	<p><strong>Exercițiu</strong>: Rulați un query din exercțiile anterioare, salvați rezultatul ca GeoJSON, și încarcați-l în geojson.io.</p>
+
+	<h3 id="hartă-web-cu-query-live">Hartă web cu query live</h3>
+
+	<p>Hartă Leaflet care afișează rezultate din Overpass. Codul este generic, afișează orice rezultate primim de la Overpass, în urma query-ului. Rezultatele vor fi tot timpul la zi cu actualizările din OpenStreetMap.</p>
+
+	<p><a href="https://github.com/mgax/workshop-geocj2015-overpass/blob/master/cafes.html">cafes.html</a></p>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/leaflet-cafes.png" title="Cafenele în Leaflet" alt="Cafenele în Leaflet" /></p>
+
+	<p><strong>Exercițiu</strong>: Salvați local fișierul <span class="caps">HTML</span> și deschideți-l în browser. Înlocuiți query-ul cu diverse query-uri din exercițiile anterioare.</p>
+
+	<h3 id="qgis"><span class="caps">QGIS</span></h3>
+
+	<p><a href="https://www.qgis.org"><span class="caps">QGIS</span></a> deschide fișiere GeoJSON ca vector layer. Dacă vrem să verificăm poziția datelor, putem instala plugin-ul &#8220;OpenLayers Plugin&#8221;, și din menul &#8220;web &gt; OpenLayers Plugin&#8221;, alegem o hartă ca background. Proiecția proiectului curent va deveni &#8220;<span class="caps">EPSG</span>:3857&#8221;  &#8211;  Web Mercator  &#8211;  proiecția folosită de majoritatea slippy map-urilor.</p>
+
+	<p><img src="http://www.geo-spatial.org/screenshots/qgis-cafes.png" title="Cafenele în QGIS" alt="Cafenele în QGIS" /></p>
