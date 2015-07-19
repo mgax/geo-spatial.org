@@ -11,6 +11,6 @@
 
   {% assign article_list = site.documents |where:"homepage",true |sort:"time" |reverse %}
   {% for page in article_list limit:5 %}
-    {% include teaser.html page=page %}
+    {% include teaser.html page=page section=true %}
   {% endfor %}
 </div>

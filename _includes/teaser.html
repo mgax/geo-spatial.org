@@ -1,11 +1,23 @@
+{% assign article = include.page %}
 <div class="item_rezumat">
   <!-- Titlu articol -->
-  <h3 class="titlu"><a rel="bookmark" href="{{ include.page.url }}">{{ include.page.title }}</a></h3>
+  <h3 class="titlu"><a rel="bookmark" href="{{ article.url }}">{{ article.title }}</a></h3>
 
-    <h4 class="autor">de {% include author.html authorid=page.authorid %}</h4>
+    <h4 class="autor">de {% include author.html authorid=article.authorid %}</h4>
 
-    <h5 class="info">{{ include.page.time | date: "%d %b %Y" }} | Categoria: <a href="http://www.geo-spatial.org/tutoriale/?c=tut_cartografie">Cartografie</a>/<a href="http://www.geo-spatial.org/tutoriale/?c=tut_gis">GIS</a></h5>
+    <h5 class="info">
+      {{ article.time | date: "%d %b %Y" }}
+
+      {% if include.section %}
+        | Secţiunea:
+        {% assign collection = site.collections[article.collection] %}
+        <a href="#">{{ collection.title }}</a>
+      {% endif %}
+
+      | Categoria:
+      <a href="#">{{ article.category1 }}</a>/<a href="#">{{ article.category2 }}</a>
+    </h5>
 
     <!-- excerpt -->
-    <p>{{ include.page.excerpt }}</p>
+    <p>{{ article.excerpt }}</p>
 </div>
