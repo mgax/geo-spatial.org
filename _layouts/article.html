@@ -1,38 +1,45 @@
 ---
-layout: page
+layout: base
 ---
-<!-- Afiseaza comentarii articol -->
+{% include left.html %}
 
-<!-- /Comentarii articol -->
+<div id="main_column">
+  <!-- Afiseaza comentarii articol -->
 
-<!-- Afiseaza articol full -->
+  <!-- /Comentarii articol -->
 
-
-
-<div class="item_full">
-<h1 class="titlu_full"><a rel="bookmark" href="{{ page.url }}">{{ page.title }}</a></h1>
-
-<h4 class="autor_full">de {% include author.html authorid=page.authorid %}</h4>
-
-<div class="introducere" id="introducere">
-<h5 class="info_full">Publicat la {{ page.time | date: "%d %b %Y" }} | Secţiunea: <a href="http://www.geo-spatial.org/articole/">Articole</a> | Categoria: <a href="http://www.geo-spatial.org/articole/?c=art_cartografie">Cartografie</a>/<a href="http://www.geo-spatial.org/articole/?c="></a></h5>
+  <!-- Afiseaza articol full -->
 
 
 
+  <div class="item_full">
+  <h1 class="titlu_full"><a rel="bookmark" href="{{ page.url }}">{{ page.title }}</a></h1>
 
-</h5>
+  <h4 class="autor_full">de {% include author.html authorid=page.authorid %}</h4>
+
+  <div class="introducere" id="introducere">
+  <h5 class="info_full">Publicat la {{ page.time | date: "%d %b %Y" }} | Secţiunea: <a href="http://www.geo-spatial.org/articole/">Articole</a> | Categoria: <a href="http://www.geo-spatial.org/articole/?c=art_cartografie">Cartografie</a>/<a href="http://www.geo-spatial.org/articole/?c="></a></h5>
+
+
+
+
+  </h5>
+  </div>
+  <div id="continut_articol" class="continut_articol">
+
+  {{ content }}
+
+  </div>
+  <div class="introducere" id="discuta">
+
+  <h5 class="info_full"><a href="http://www.geo-spatial.org/index.php?s=articole&id=425&display_type=comments">Discută articolul</a> <em>(0 comentarii)</em></h5>
+
+
+  </div>
+  </div>
+
+  <!-- /Afiseaza articol full -->
 </div>
-<div id="continut_articol" class="continut_articol">
 
-{{ content }}
-
+<div id="right_column">
 </div>
-<div class="introducere" id="discuta">
-
-<h5 class="info_full"><a href="http://www.geo-spatial.org/index.php?s=articole&id=425&display_type=comments">Discută articolul</a> <em>(0 comentarii)</em></h5>
-
-
-</div>
-</div>
-
-<!-- /Afiseaza articol full -->
