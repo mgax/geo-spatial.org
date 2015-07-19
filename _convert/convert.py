@@ -32,6 +32,7 @@ class User(Base):
     website = Column(String)
     description = Column(String)
     photo = Column(String)
+    signupdate = Column(DateTime)
 
 
 def create_session(dbname):
@@ -65,11 +66,17 @@ def export(slug):
 
 def dump_authors():
     for user in session.query(User).order_by('id'):
-        print '- id:', user.userid.encode('utf-8')
-        print '  name:', user.name.encode('utf-8')
-        print '  photo:', user.photo.encode('utf-8')
-        print '  description:', jsonify(user.description)
-        print
+        if user.userid == '57': user.userid = 'alex'
+        with open('_autori/' + user.userid + '.html', 'wb') as f:
+            f.write('---\n')
+            f.write('id: ' + str(user.id) + '\n')
+            f.write('slug: ' + user.userid.encode('utf-8') + '\n')
+            f.write('name: ' + user.name.encode('utf-8') + '\n')
+            f.write('photo: ' + user.photo.encode('utf-8') + '\n')
+            f.write('signup_date: ' + str(user.signupdate) + '\n')
+            f.write('---\n')
+            f.write(user.description.encode('utf-8'))
+            f.write('\n')
 
 
 arg = sys.argv[1]
