@@ -20,6 +20,8 @@ class Article(Base):
     title = Column(String)
     body_html = Column(String)
     excerpt = Column(String)
+    category1 = Column(String)
+    category2 = Column(String)
     section = Column(String)
     url_title = Column(String)
 
@@ -60,6 +62,8 @@ def export(slug):
         f.write('title: ' + jsonify(article.title) + '\n')
         f.write('authorid: ' + jsonify(article.authorid) + '\n')
         f.write('excerpt: ' + jsonify(article.excerpt) + '\n')
+        f.write('category1: ' + jsonify(article.category1) + '\n')
+        f.write('category2: ' + jsonify(article.category2) + '\n')
         f.write('time: ' + str(article.posted) + '\n')
         f.write('---\n')
         f.write(html.replace('\r\n', '\n').encode('utf-8'))
