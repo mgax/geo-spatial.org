@@ -1,5 +1,8 @@
+---
+layout: page
+---
 <div id="lists_articole">
-  {% for page in include.page_list %}
+  {% for page in site.collections[page.collection].docs %}
     <div class="item_rezumat">
       <!-- Titlu articol -->
       <h3 class="titlu"><a rel="bookmark" href="{{ page.url }}">{{ page.title }}</a></h3>
