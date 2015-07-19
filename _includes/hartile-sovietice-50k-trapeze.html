@@ -1,0 +1,64 @@
+<div id="filtruTrapeze" style="width: 582px;">
+  <ul>
+    <li><a href="#filtru-1"><span>Hartă</span></a></li>
+    <li><a href="#filtru-3"><span>Indicativ 50k</span></a></li>
+    <li><a href="#filtru-5"><span>Mozaic</span></a></li>
+  </ul>
+
+  <!-- Filtru 1: Harta -->
+  <div id="filtru-1">
+    <div id="map"></div>
+    <form id="coordonate" name="coordonate">
+      <br />
+      <input type="button" id="aplicaFiltru" name="aplicaFiltru" value="Aplica filtrul" style="margin-right: 5px;"/>
+    </form>
+
+    <div id="tabelTrapezeContainer" name="tabelTrapezeContainer" style="width: 480px;">
+    </div>
+  </div>
+
+  <!-- Filtru 3: Indicativ 50k-->
+  <div id="filtru-3">
+    <txp:php>
+    global $hostOwn;;
+    global $databaseOwn;
+    global $userOwn;
+    global $passOwn;
+    require_once('php/myown/functions/functii.php');
+      $legaturi_trapeze = tablou('earth', 'eharta_soviet_50k', 'where status=3', 'indicativ');
+      echo '<form id="indicativSelectTrapeze50k" name="indicativSelectTrapeze50k" action="../php/myown/getmapsheets_soviet50k.php" method="post">';
+      foreach ($legaturi_trapeze as $trapez){
+        echo '
+          <div style="width: 100px; float: left; overflow: hidden; white-space: nowrap;">
+          <input type="checkbox" id="'.$trapez['indicativ'].'"  name="'.$trapez['indicativ'].'"  value="'.$trapez['indicativ'].'"/><label for="'.$trapez['indicativ'].'"> '.$trapez['indicativ'].'</label></div>';
+      }
+    </txp:php>
+      <br />
+      <input type="hidden" name="qType" id="qType" value="3" />
+      <br />
+      <input type="submit" id="aplicaFiltruTrapez" name="aplicaFiltruTrapez" value="Aplica filtrul" style="margin-right: 5px; margin-top: 15px;"/>
+      </form>
+      <div style="clear: both;"></div>
+      <div id="tabelTrapezeContainerIndicativ50k" name="tabelTrapezeContainerIndicativ50k" style="width: 480px;" ></div>
+  </div>
+
+  <!-- Filtru 5: All -->
+  <div id="filtru-5">
+      <table id="tabelTrapeze" name="tabelTrapeze" style="width: 560px;">
+        <tr>
+          <th>Mozaic</th>
+          <th>Vizualizare</th>
+          <th>Download</th>
+          <th>Google Earth</th>
+        </tr>
+        <tr id="mozaicSoviet" name="mozaicSoviet">
+          <td style="vertical-align: middle; font-weight: bold; clear: both;"><img src="/images/mozaic_soviet_50k_thumb.png" /></td>
+          <td style="vertical-align: middle; clear: both;">
+            <a target="blank" href="{{ site.base_url }}/geoserver/geospatial/wms?service=WMS&version=1.1.0&request=GetMap&layers=geospatial:mozaic_soviet_50k&styles=&bbox=131146.90628047846,240724.85044557217,895194.4939547718,740965.0617246781&width=512&height=335&srs=EPSG:31700&format=application/openlayers"><img src="/images/preview.png" border="0" alt="Vizualizare" title="Vizualizare"></a>
+          </td>
+          <td style="vertical-align: middle; clear: both;"><a href="/file_download/29252">GeoTiff (2.8 GiB)</a></td>
+          <td style="vertical-align: middle; clear: both;"><a href="/file_download/29253">KML (1 KiB)</a></td>
+        </tr>
+      </table>
+  </div>
+</div>
