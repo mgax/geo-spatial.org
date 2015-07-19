@@ -1,0 +1,18 @@
+---
+title: "Autori"
+---
+<link rel="stylesheet" href="http://www.geo-spatial.org/css/autori.css">
+
+{% for author in site.data.authors %}
+  <div class="item_autor">
+    <h2>
+      <a href="#">{{ author.name }}</a>
+    </h2>
+
+    <img src="{{ site.image_base_url }}/{{ author.photo }}">
+
+    <p>{{ author.description|safe }}</p>
+
+    <p style="clear: both;"></p>
+  </div>
+{% endfor %}
