@@ -3,15 +3,18 @@ image_base_url: "http://www.geo-spatial.org/images"
 
 defaults:
   - scope: {path: ""}
-    values:
-      layout: "page"
+    values: {layout: "page"}
+
+  - scope: {path: "", type: "articole"}
+    values: {layout: "article"}
+
+  - scope: {path: "", type: "tutoriale"}
+    values: {layout: "article"}
+
+  - scope: {path: "", type: "download"}
+    values: {layout: "article"}
 
 collections:
-  articole:
-    output: true
-
-  tutoriale:
-    output: true
-
-  download:
-    output: true
+  articole: {output: true}
+  tutoriale: {output: true}
+  download: {output: true}
