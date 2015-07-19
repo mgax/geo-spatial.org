@@ -1,0 +1,14 @@
+<div id="lists_articole">
+  {% for page in include.page_list %}
+    <div class="item_rezumat">
+      <!-- Titlu articol -->
+      <h3 class="titlu"><a rel="bookmark" href="{{ page.url }}">{{ page.title }}</a></h3>
+
+        <h4 class="autor">de <a href="http://www.geo-spatial.org/index.php?s=autori&amp;autor=Matei Domnița">Matei Domnița</a></h4>	
+
+        <h5 class="info">{{ page.time | date: "%d %b %Y" }} | Categoria: <a href="http://www.geo-spatial.org/tutoriale/?c=tut_cartografie">Cartografie</a>/<a href="http://www.geo-spatial.org/tutoriale/?c=tut_gis">GIS</a></h5>
+
+        <!-- excerpt -->
+    </div>
+  {% endfor %}
+</div>
