@@ -19,6 +19,7 @@ class Article(Base):
     authorid = Column(String)
     title = Column(String)
     body_html = Column(String)
+    excerpt = Column(String)
     section = Column(String)
     url_title = Column(String)
 
@@ -58,9 +59,10 @@ def export(slug):
         f.write('---\n')
         f.write('title: ' + jsonify(article.title) + '\n')
         f.write('authorid: ' + jsonify(article.authorid) + '\n')
+        f.write('excerpt: ' + jsonify(article.excerpt) + '\n')
         f.write('time: ' + str(article.posted) + '\n')
         f.write('---\n')
-        f.write(html.encode('utf-8'))
+        f.write(html.replace('\r\n', '\n').encode('utf-8'))
         f.write('\n')
 
 
