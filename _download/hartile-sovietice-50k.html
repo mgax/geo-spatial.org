@@ -35,19 +35,19 @@ time: 2012-09-19 12:20:46
 		float: left;
 	}
 	.selectByClickBtnItemActive {
-	background-image:url(../js/OpenLayers-2.8/theme/default/img/add_point_on.png);
+	background-image:url(http://www.geo-spatial.org/js/OpenLayers-2.8/theme/default/img/add_point_on.png);
 	}
 	.selectByClickBtnItemInactive {
-	background-image:url(../js/OpenLayers-2.8/theme/default/img/add_point_off.png);
+	background-image:url(http://www.geo-spatial.org/js/OpenLayers-2.8/theme/default/img/add_point_off.png);
 	}
 	.selectByBoxBtnItemActive {
-	background-image:url(../js/OpenLayers-2.8/theme/default/img/draw_polygon_on.png);
+	background-image:url(http://www.geo-spatial.org/js/OpenLayers-2.8/theme/default/img/draw_polygon_on.png);
 	}
 	.selectByBoxBtnItemInactive {
-	background-image:url(../js/OpenLayers-2.8/theme/default/img/draw_polygon_off.png);;
+	background-image:url(http://www.geo-spatial.org/js/OpenLayers-2.8/theme/default/img/draw_polygon_off.png);;
 	}
 	.clearSelectionBtnItemInactive {
-	background-image:url(../images/clear_selection.png);
+	background-image:url(http://www.geo-spatial.org/images/clear_selection.png);
 	}
 	.olControlPanel div {
 	margin-left:5px !important;
@@ -72,7 +72,7 @@ $(document).ready(function() {
 		  planse = planse + '@' + select.features[i].attributes.indicativ;
 		}
 
-		$.post('../php/myown/getmapsheets_soviet50k.php', {'planse': planse, 'qType': 1}, function(data) {
+		$.post('http://www.geo-spatial.org/php/myown/getmapsheets_soviet50k.php', {'planse': planse, 'qType': 1}, function(data) {
 		$('#tabelTrapezeContainer').html(data);
 		});
 	return false;
@@ -121,7 +121,7 @@ $(function() {
 		var lat = 5787200;
 		var lon = 2768854;
        function initMap(){
-			OpenLayers.ProxyHost="{{ site.base_url }}/cgi-bin/proxy.cgi/?url=";
+			OpenLayers.ProxyHost="http://www.geo-spatial.org/cgi-bin/proxy.cgi/?url=";
            var options = {
                projection: new OpenLayers.Projection("EPSG:900913"),
                displayProjection: new OpenLayers.Projection("EPSG:4326"),
@@ -138,8 +138,8 @@ $(function() {
 
            };
            map = new OpenLayers.Map('map', options);
-			index_soviet = new OpenLayers.Layer.WMS("Caroiaj","{{ site.base_url }}/geoserver/wms", {layers: 'geospatial:index_eharta_soviet_50k_existent', format: 'image/png', srs: 'EPSG:900913', tiled: 'true', transparent: 'true'}, {isBaseLayer: false, displayInLayerSwitcher: false});
-			mozaic_soviet_50k = new OpenLayers.Layer.WMS("Mozaic 1: 50 000","{{ site.base_url }}/geoserver/wms", {layers: 'geospatial:mozaic_soviet_50k', format: 'image/png', srs: 'EPSG:900913', transparent: 'true'}, {isBaseLayer: true, displayInLayerSwitcher: true});
+			index_soviet = new OpenLayers.Layer.WMS("Caroiaj","http://www.geo-spatial.org/geoserver/wms", {layers: 'geospatial:index_eharta_soviet_50k_existent', format: 'image/png', srs: 'EPSG:900913', tiled: 'true', transparent: 'true'}, {isBaseLayer: false, displayInLayerSwitcher: false});
+			mozaic_soviet_50k = new OpenLayers.Layer.WMS("Mozaic 1: 50 000","http://www.geo-spatial.org/geoserver/wms", {layers: 'geospatial:mozaic_soviet_50k', format: 'image/png', srs: 'EPSG:900913', transparent: 'true'}, {isBaseLayer: true, displayInLayerSwitcher: true});
 			index_soviet.setOpacity(0.7);
            mapnik = new OpenLayers.Layer.TMS(
                "OpenStreetMap",
@@ -298,8 +298,8 @@ As for the linecence the thing is that soviet topographic maps are not copyright
 <h2>Accesarea hărților folosind servicii online</h2>
 
 <ul>
-	<li><a href="{{ site.base_url }}/geoserver/ows?service=WMS&request=GetCapabilities">WMS</a></li>
-	<li><a href="{{ site.base_url }}/geoserver/gwc/service/wms?service=WMS&version=1.1.1&request=getcapabilities&tiled=true">WMTS</a></li>
+	<li><a href="http://www.geo-spatial.org/geoserver/ows?service=WMS&request=GetCapabilities">WMS</a></li>
+	<li><a href="http://www.geo-spatial.org/geoserver/gwc/service/wms?service=WMS&version=1.1.1&request=getcapabilities&tiled=true">WMTS</a></li>
 	<li><a href="/file_download/25410">KML</a></li>
 </ul>
 
@@ -318,6 +318,6 @@ As for the linecence the thing is that soviet topographic maps are not copyright
 			}
 		</script>
 
-<img src="../myincludes/pictures/map/unpx.png" onload="initMap()">
+<img src="http://www.geo-spatial.org/myincludes/pictures/map/unpx.png" onload="initMap()">
 
 {% include hartile-sovietice-50k-trapeze.html %}
