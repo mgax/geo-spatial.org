@@ -1,4 +1,4 @@
-base_url: ""
+base_url: "http://mgax.github.io/geo-spatial.org"
 image_base_url: "http://www.geo-spatial.org/images"
 
 defaults:
