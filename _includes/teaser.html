@@ -17,7 +17,7 @@
     {% if include.section %}
       | Secţiunea:
       {% assign collection = site.collections[article.collection] %}
-      <a href="#">{{ collection.title }}</a>
+      <a href="{{ site.base_url }}/{{ article.collection }}/">{{ collection.title }}</a>
     {% endif %}
 
     | Categoria:
