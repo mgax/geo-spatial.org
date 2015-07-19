@@ -27,7 +27,7 @@ layout: base
 
 <div id="right_column">
   <ul class="subtopics">
-    {% assign autori = site.collections.autori.docs | sort: 'id' %}
+    {% assign autori = site.collections.autori.docs | sort: 'order' %}
     {% for author in autori %}
       <li>
         <a href="{{ site.base_url }}/autori/{{ author.slug }}">

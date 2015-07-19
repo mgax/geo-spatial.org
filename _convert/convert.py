@@ -69,11 +69,11 @@ def dump_authors():
         if user.userid == '57': user.userid = 'alex'
         with open('_autori/' + user.userid + '.html', 'wb') as f:
             f.write('---\n')
-            f.write('id: ' + str(user.id) + '\n')
             f.write('slug: ' + user.userid.encode('utf-8') + '\n')
             f.write('name: ' + user.name.encode('utf-8') + '\n')
             f.write('photo: ' + user.photo.encode('utf-8') + '\n')
             f.write('signup_date: ' + str(user.signupdate) + '\n')
+            f.write('order: ' + str(user.id) + '\n')
             f.write('---\n')
             f.write(user.description.encode('utf-8'))
             f.write('\n')

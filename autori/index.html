@@ -5,7 +5,7 @@ title: "Autori"
 
 <h1 class="nume">Autori</h1>
 
-{% assign autori = site.collections.autori.docs | sort: 'id' %}
+{% assign autori = site.collections.autori.docs | sort: 'order' %}
 {% for author in autori %}
   <div class="item_autor">
     <h2>
