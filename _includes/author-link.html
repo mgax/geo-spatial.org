@@ -1,5 +1,1 @@
-{% for author in site.data.authors %}
-  {% if author.id == include.authorid %}
-    <a href="#">{{ author.name }}</a>
-  {% endif %}
-{% endfor %}
+{% for author in site.data.authors %}{% if author.id == include.authorid %}<a href="#">{{ author.name }}</a>{% endif %}{% endfor %}
