@@ -21,6 +21,7 @@ class Article(Base):
     authorid = Column(String)
     title = Column(String)
     body_html = Column(String)
+    section = Column(String)
     url_title = Column(String)
 
 
@@ -36,7 +37,8 @@ def export(slug):
         .replace('http://www.geo-spatial.org',
                  '{{ site.base_url }}')
     )
-    with open('articole/' + slug + '.html', 'wb') as f:
+    folder = article.section
+    with open(folder + '/' + slug + '.html', 'wb') as f:
         f.write('---\n')
         f.write('title: ' + json.dumps(article.title) + '\n')
         f.write('authorid: ' + json.dumps(article.authorid) + '\n')
