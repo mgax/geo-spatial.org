@@ -1,0 +1,61 @@
+---
+title: "Ad\u0103ugarea \u0219i editarea datelor \u00een OpenStreetMap folosind JOSM. Func\u021bii avansate."
+authorid: "mateid"
+time: 2014-12-01 16:26:56
+---
+	<p>Pe lîngă posibilitatea de a edita mai multe obiecte odată, <span class="caps">JOSM</span> mai are diverse funcții care pot fi foarte utile în editarea datelor din <span class="caps">OSM</span>. Am să prezint aici două asemenea funcții foarte utile pentru editările comune care se fac pe datele <span class="caps">OSM</span>.<br />
+Prima astfel de funcție sunt filtrele. Filtrele permit afișarea sau ascunderea obiectelor care pot fi editate în funcție de anumite criterii.</p>
+
+	<h2>Filtre pentru date. Adăugarea unui nou filtru</h2>
+
+	<p>Adăugarea unui filtru se face din fereastra <strong>Filters</strong> (Windows -&gt; Filter din meniu sau Alt+Shift+F de la tastatură ). Butonul <strong>Add</strong> de aici crează un nou filtru folosind o fereastră de dialog ca cea din figură.</p>
+
+	<p>Exemplele prezentate au fost create în timpul unor modificări de adrese în Cluj dar filtre similare cu cele folosite se pot aplica în orice fel de ”teme” de editare.</p>
+
+	<p>În cazul de față am folosit un filtru <em>building=*</em> pentru a vedea toate clădirile din Cluj (fig. ). În fereastra Filters observăm trei checkbox-uri. Semnificația lor este următoarea
+	<ol>
+		<li>activ/inactiv – activează sau dezactivează filtrul</li>
+		<li>afișează/nu afișa restul obiectelor – Dacă e dezactivat, obiectele care nu corespund filtrului sunt doar inactive și afișate cu gri. Dacă e bifată această opțiune (tasta H) obiectele vor dispărea.</li>
+		<li>Invert Filter – Dacă e dezactivat, obiectele care corespund filtrului sunt inactive/dispar. Altfel, restul obiectelor dispar.</li>
+	</ol></p>
+
+	<p><a href="{{ site.image_base_url }}/3103.png"><img src="{{ site.image_base_url }}/3103t.png" title="Building Filter" alt="Building Filter" /></a></p>
+
+	<p>Exemplul meu afișează doar clădirile (tag-ul building are orice valoare, restul obiectelor sunt dezactivate datorită opțiunii invert).<br />
+Pentru a edita adresele însă mă interesează să elimin clădirile care au deja adresă. Elementele de bază componente ale unei adrese în <span class="caps">OSM</span> cu care am lucrat eu sunt <em>addr:street</em> <em>addr:housenumber</em> <em>addr:city</em> și <em>addr:country</em> . </p>
+
+	<p>Numerele de stradă nu pot fi editate în masă dar celelalte opțiuni pot. Prin urmare, putem activa un filtru care să afișeze doar clădirile care nu au stradă (building=* &amp;&amp; -&#8220;addr:street&#8221;=*) (fig. ). Din nou, bifăm invert și nu bifăm hide pentru a vedea doar clădirile care corespund și a vedea dezactivate restul informațiilor (poate ne interesează ceva de acolo, de ex. unde încep și unde se termină străzile).</p>
+
+	<p><a href="{{ site.image_base_url }}/3104.png"><img src="{{ site.image_base_url }}/3104t.png" title="Building Street" alt="Building Street" /></a></p>
+
+	<p>La fel ca în primul tutorial, alegem clădiri care nu au stradă și le adăugăm numele de stradă din fereastra tags.</p>
+
+	<p>Un alt filtru similar e cel care afișează clădirile care nu au oraș <em>building=* &amp;&amp; -&#8220;addr:city&#8221;=*</em> (fig. ) sau țară <em>building=* &amp;&amp; -&#8220;addr:country&#8221;=*</em> În figură se poate vedea că o bună parte din clădirile din Cluj nu aveau specificat orașul în care se află. L-am adăugat pentru a face adresa mai corectă.</p>
+
+	<p><a href="{{ site.image_base_url }}/3105.png"><img src="{{ site.image_base_url }}/3105t.png" title="Building City" alt="Building City" /></a></p>
+
+	<p>Notă: Dacă citim pe <a href="http://wiki.openstreetmap.org/wiki/Key:addr">wiki</a> observăm că, la fel ca în multe cazuri, tag-ul addr:city nu e foarte bine clarificat. Din <span class="caps">OSM</span> wiki: <cite>May or may not be a clone of is_in:city=* &#8230;The name of the city as given in postal addresses of the building/area.</cite> Eu consider mai clar acest tag decît cel de <em>is_in:city</em>. Dar asta e o chestie de gusturi personale, se face la fel și în celălalt caz.</p>
+
+	<p>Cam astea sunt operațiile pe care la-am folosit de multe ori în editarea de adrese. Alte exemple de filtre pentru diverse necesități ar fi:</p>
+
+	<p><em>type:node</em> – afișează sau nu afișează nodurile (în primul tutorial am folosit acest filtru la editarea în masă a clădirilor pentru a pune tag-uri doar pe poligoane și nu pe noduri, spuneam că nodurile au tag-uri doar în situații speciale). Adăugînd acest filtru nu mai trebuie făcută operația de filtrare ulterioară din fereastra Search (Atenție totuși la ce se selectează și ce nu și la rezultatele din Validation).</p>
+
+	<p><em>modified</em> – doar modificările făcute în cadrul sesiunii curente de editare (ce nu a fost încă încărcat în <span class="caps">OSM</span>)</p>
+
+	<p>Mai multe informații despre filtre se pot vedea pe <a href="https://josm.openstreetmap.de/wiki/Help/Dialog/Filter">pagina <span class="caps">JOSM</span></a></p>
+
+	<h2>Folosirea informatiilor extrase din track-uri gpx (înregistrate cu <span class="caps">GPS</span>-ul)</h2>
+
+	<p>Pe lîngă informațiile obținute din imagini satelitare e posibil (și chiar recomandat) să folosim informații din alte surse. O asemenea sursă de informații sunt traseele (track-urile) gps înregistrate cu telefonul mobil sau cu un <span class="caps">GPS</span> portabil.</p>
+
+	<p>Acestea în general vin într-un format standard numit <strong>gpx</strong> care poate fi citit și folosit în foarte multe programe. <span class="caps">JOSM</span> permite folosirea track-urilor în format gpx ca sursă de date. Ca exemplu, încarc un track gpx (folosind File -&gt; Open) din zona Padiș, jud. Bihor. (fig. )</p>
+
+	<p><a href="{{ site.image_base_url }}/3106.png"><img src="{{ site.image_base_url }}/3106t.png" title="GPX track" alt="GPX track" /></a></p>
+
+	<p>După încărcarea ca strat de imagine a hărții <span class="caps">OSM</span> pot să observ că o anumită zonă a traseului pe care l-am înregistrat lipsește din baza de date <span class="caps">OSM</span> (fig. ) </p>
+
+	<p><span class="caps">JOSM</span> permite folosirea traseelor înregistrate pe <span class="caps">GPS</span> ca orice sursă de bază (fundal) de date. Folosind informațiile de pe <span class="caps">GPS</span> am digitizat partea lipsă din traseu și i-am adăugat tag-urile necesare (fig. )</p>
+
+	<p><a href="{{ site.image_base_url }}/3107.png"><img src="{{ site.image_base_url }}/3107t.png" title="JOSM edit" alt="JOSM edit" /></a></p>
+
+	<p>Cei care au posibilitatea de a folosi gps-uri pentru înregistrarea de date, indiferent dacă merg prin zone mai puțin circulate cum am făcut eu sau dacă aleg să completeze informații lipsă în anumite zone, pot să contribuie la baza de date <span class="caps">OSM</span> cu aceste informații folosind metoda prezentată.</p>
