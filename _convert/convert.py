@@ -67,6 +67,7 @@ def dump_authors():
     for user in session.query(User).order_by('id'):
         print '- id:', user.userid.encode('utf-8')
         print '  name:', user.name.encode('utf-8')
+        print '  photo:', user.photo.encode('utf-8')
         print '  description:', jsonify(user.description)
         print
 
