@@ -1,0 +1,29 @@
+---
+layout: base
+---
+{% include left.html %}
+
+<link rel="stylesheet" href="http://www.geo-spatial.org/css/autori.css">
+
+<div id="main_column">
+  {% if page.photo %}
+
+    <h1 class="nume">
+      <a href="{{ site.base_url }}/autori/">Autori</a>:
+      {{ page.name }}
+    </h1>
+    <div class="introducere" id="introducere">
+      <img src="{{ site.image_base_url }}/{{ page.photo }}" style="float: left; padding-right: 3px;">
+      <p>{{ content }}</p>
+      <p style="clear: both;"></p>
+    </div>
+
+  {% else %}
+
+    {{ content }}
+
+  {% endif %}
+</div>
+
+<div id="right_column">
+</div>

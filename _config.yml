@@ -32,6 +32,9 @@ defaults:
   - scope: {path: "", type: "info"}
     values: {layout: "article"}
 
+  - scope: {path: "", type: "autori"}
+    values: {layout: "author"}
+
 collections:
   articole:  {output: true, title: "Articole"}
   tutoriale: {output: true, title: "Tutoriale"}
@@ -43,5 +46,6 @@ collections:
   blog:      {output: true, title: "Blog"}
   info:      {output: true, title: "Info"}
   stiri:     {output: true}
+  autori:    {output: true}
 
 menu: [articole, tutoriale, recenzii, resurse, galerii, download, osgeo, blog, info]
