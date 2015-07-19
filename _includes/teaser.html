@@ -1,23 +1,29 @@
 {% assign article = include.page %}
 <div class="item_rezumat">
   <!-- Titlu articol -->
-  <h3 class="titlu"><a rel="bookmark" href="{{ article.url }}">{{ article.title }}</a></h3>
+  <h3 class="titlu">
+    <a rel="bookmark" href="{{ site.base_url }}{{ article.url }}">
+      {{ article.title }}
+    </a>
+  </h3>
 
-    <h4 class="autor">de {% include author.html authorid=article.authorid %}</h4>
+  <h4 class="autor">
+    de {% include author.html authorid=article.authorid %}
+  </h4>
 
-    <h5 class="info">
-      {{ article.time | date: "%d %b %Y" }}
+  <h5 class="info">
+    {{ article.time | date: "%d %b %Y" }}
 
-      {% if include.section %}
-        | Secţiunea:
-        {% assign collection = site.collections[article.collection] %}
-        <a href="#">{{ collection.title }}</a>
-      {% endif %}
+    {% if include.section %}
+      | Secţiunea:
+      {% assign collection = site.collections[article.collection] %}
+      <a href="#">{{ collection.title }}</a>
+    {% endif %}
 
-      | Categoria:
-      <a href="#">{{ article.category1 }}</a>/<a href="#">{{ article.category2 }}</a>
-    </h5>
+    | Categoria:
+    <a href="#">{{ article.category1 }}</a>/<a href="#">{{ article.category2 }}</a>
+  </h5>
 
-    <!-- excerpt -->
-    <p>{{ article.excerpt }}</p>
+  <!-- excerpt -->
+  <p>{{ article.excerpt }}</p>
 </div>
