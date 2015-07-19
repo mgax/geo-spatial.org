@@ -1,0 +1,10 @@
+<ul id="sectiuni">
+  {% for collection in site.menu %}
+    <li id="{{ collection }}">
+      <a href="{{ site.base_url }}/{{ collection }}/"
+         title="{{ site.collections[collection].title }}">
+        {{ collection }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

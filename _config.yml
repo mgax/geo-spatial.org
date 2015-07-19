@@ -11,10 +11,37 @@ defaults:
   - scope: {path: "", type: "tutoriale"}
     values: {layout: "article"}
 
+  - scope: {path: "", type: "recenzii"}
+    values: {layout: "article"}
+
+  - scope: {path: "", type: "resurse"}
+    values: {layout: "article"}
+
+  - scope: {path: "", type: "galerii"}
+    values: {layout: "article"}
+
   - scope: {path: "", type: "download"}
     values: {layout: "article"}
 
+  - scope: {path: "", type: "osgeo"}
+    values: {layout: "article"}
+
+  - scope: {path: "", type: "blog"}
+    values: {layout: "article"}
+
+  - scope: {path: "", type: "info"}
+    values: {layout: "article"}
+
 collections:
-  articole: {output: true}
-  tutoriale: {output: true}
-  download: {output: true}
+  articole:  {output: true, title: "Articole"}
+  tutoriale: {output: true, title: "Tutoriale"}
+  recenzii:  {output: true, title: "Recenzii"}
+  resurse:   {output: true, title: "Resurse"}
+  galerii:   {output: true, title: "Galerii"}
+  download:  {output: true, title: "Download"}
+  osgeo:     {output: true, title: "OSGeo"}
+  blog:      {output: true, title: "Blog"}
+  info:      {output: true, title: "Info"}
+  stiri:     {output: true}
+
+menu: [articole, tutoriale, recenzii, resurse, galerii, download, osgeo, blog, info]
