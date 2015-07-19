@@ -5,7 +5,8 @@ title: "Autori"
 
 <h1 class="nume">Autori</h1>
 
-{% for author in site.data.authors %}
+{% assign autori = site.collections.autori.docs | sort: 'id' %}
+{% for author in autori %}
   <div class="item_autor">
     <h2>
       <a href="#">{{ author.name }}</a>
@@ -13,7 +14,7 @@ title: "Autori"
 
     <img src="{{ site.image_base_url }}/{{ author.photo }}">
 
-    <p>{{ author.description|safe }}</p>
+    <p>{{ author.content }}</p>
 
     <p style="clear: both;"></p>
   </div>
