@@ -9,7 +9,7 @@ title: "Autori"
 {% for author in autori %}
   <div class="item_autor">
     <h2>
-      <a href="#">{{ author.name }}</a>
+      <a href="{{ site.base_url }}/autori/{{ author.slug }}">{{ author.name }}</a>
     </h2>
 
     <img src="{{ site.image_base_url }}/{{ author.photo }}">
