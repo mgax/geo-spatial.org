@@ -1,0 +1,387 @@
+---
+title: "Hărțile sovietice 1: 50 000 reproiectate în Stereo70"
+authorid: "admin"
+time: 2012-09-19 12:20:46
+---
+<style type="text/css">
+	#continut_articol #filtruTrapeze { font: 100% "Trebuchet MS", sans-serif;}
+	#continut_articol #filtruTrapeze .demoHeaders { margin-top: 2em; }
+	#continut_articol #filtruTrapeze #dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+	#continut_articol #filtruTrapeze #dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+	#continut_articol #filtruTrapeze ul#icons {margin: 0; padding: 0;}
+	#continut_articol #filtruTrapeze ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+	#continut_articol #filtruTrapeze ul#icons span.ui-icon {float: left; margin: 0 4px;}
+	#continut_articol #filtruTrapeze .ui-tabs .ui-tabs-nav li a {padding: 3px 0px 3px 6px;}
+	#continut_articol #filtruTrapeze a:hover {background: none;}
+
+	#continut_articol #tabAccesare { font: 100% "Trebuchet MS", sans-serif;}
+	#continut_articol #tabAccesare .demoHeaders { margin-top: 2em; }
+	#continut_articol #tabAccesare #dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+	#continut_articol #tabAccesare #dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+	#continut_articol #tabAccesare ul#icons {margin: 0; padding: 0;}
+	#continut_articol #tabAccesare ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+	#continut_articol #tabAccesare ul#icons span.ui-icon {float: left; margin: 0 4px;}
+	#continut_articol #tabAccesare .ui-tabs .ui-tabs-nav li a {padding: 3px 0px 3px 6px;}
+	#continut_articol #tabAccesare a:hover {background: none;}
+
+    #continut_articol #map {
+        width: 530px;
+        height: 350px;
+    }
+    .olPopup p { margin:0px; font-size: .9em;}
+    .olPopup h2 { font-size:1.2em; }
+	#menu {
+		width: 100px;
+		float: left;
+	}
+	.selectByClickBtnItemActive {
+	background-image:url(../js/OpenLayers-2.8/theme/default/img/add_point_on.png);
+	}
+	.selectByClickBtnItemInactive {
+	background-image:url(../js/OpenLayers-2.8/theme/default/img/add_point_off.png);
+	}
+	.selectByBoxBtnItemActive {
+	background-image:url(../js/OpenLayers-2.8/theme/default/img/draw_polygon_on.png);
+	}
+	.selectByBoxBtnItemInactive {
+	background-image:url(../js/OpenLayers-2.8/theme/default/img/draw_polygon_off.png);;
+	}
+	.clearSelectionBtnItemInactive {
+	background-image:url(../images/clear_selection.png);
+	}
+	.olControlPanel div {
+	margin-left:5px !important;
+	margin-top:5px !important;
+	margin-right: 5px;
+	width:24px;
+	height:22px;
+ 	float: left;
+	}
+	.olControlPanel {
+	margin-left:443px !important;
+	}
+</style>
+
+<script type="text/javascript">
+
+//filtru harta
+$(document).ready(function() {
+	$('#aplicaFiltru').bind('click', function() {
+		var planse = new Array();;
+		for ( var i=0, len=select.features.length; i<len; ++i ){
+		  planse = planse + '@' + select.features[i].attributes.indicativ;
+		}
+
+		$.post('../php/myown/getmapsheets_soviet50k.php', {'planse': planse, 'qType': 1}, function(data) {
+		$('#tabelTrapezeContainer').html(data);
+		});
+	return false;
+	});
+});
+
+//filtru indicativ 100k
+$(document).ready(function() {
+    var options = {
+        target: '#tabelTrapezeContainerIndicativ50k',
+				type: 'post'
+    };
+    $('#indicativSelectTrapeze50k').submit(function() {
+        $(this).ajaxSubmit(options);
+        return false;
+    });
+});
+
+//filtru indicativ
+$(document).ready(function() {
+    var options = {
+        target: '#tabelTrapezeContainerIndicativ',
+				type: 'post'
+    };
+    $('#indicativSelectTrapeze').submit(function() {
+        $(this).ajaxSubmit(options);
+        return false;
+    });
+});
+
+//tab-uri filtre
+$(function() {
+	$('#tabHarti').tabs();
+});
+//tab-uri filtre
+$(function() {
+	$('#tabAccesare').tabs();
+});
+//tab-uri filtre
+$(function() {
+	$('#filtruTrapeze').tabs();
+});
+       var map, select, austrian, mapnik, gmapPhysical, gmapSatellite, selectControls;
+		var rextent = new OpenLayers.Bounds(2120668,5359152,3417039,6215247);
+		var zoom = 6;
+		var lat = 5787200;
+		var lon = 2768854;
+       function initMap(){
+			OpenLayers.ProxyHost="{{ site.base_url }}/cgi-bin/proxy.cgi/?url=";
+           var options = {
+               projection: new OpenLayers.Projection("EPSG:900913"),
+               displayProjection: new OpenLayers.Projection("EPSG:4326"),
+               units: "m",
+				controls: [],
+               maxResolution: 156543.0339,
+               maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34,
+                                                20037508.34, 20037508.34),
+
+												restrictedExtent: rextent
+
+
+
+
+           };
+           map = new OpenLayers.Map('map', options);
+			index_soviet = new OpenLayers.Layer.WMS("Caroiaj","{{ site.base_url }}/geoserver/wms", {layers: 'geospatial:index_eharta_soviet_50k_existent', format: 'image/png', srs: 'EPSG:900913', tiled: 'true', transparent: 'true'}, {isBaseLayer: false, displayInLayerSwitcher: false});
+			mozaic_soviet_50k = new OpenLayers.Layer.WMS("Mozaic 1: 50 000","{{ site.base_url }}/geoserver/wms", {layers: 'geospatial:mozaic_soviet_50k', format: 'image/png', srs: 'EPSG:900913', transparent: 'true'}, {isBaseLayer: true, displayInLayerSwitcher: true});
+			index_soviet.setOpacity(0.7);
+           mapnik = new OpenLayers.Layer.TMS(
+               "OpenStreetMap",
+               "http://tile.openstreetmap.org/",
+               {
+                   type: 'png', getURL: osm_getTileURL,
+                   displayOutsideMaxExtent: true,
+                   attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'
+               }
+           );
+           gmapPhysical = new OpenLayers.Layer.Google("Google Physical", {type: G_PHYSICAL_MAP, sphericalMercator:true});
+			gmapSatellite = new OpenLayers.Layer.Google("Google Satellite", {type: G_SATELLITE_MAP, sphericalMercator:true});
+
+
+           map.addLayers([mapnik, mozaic_soviet_50k]);
+
+
+		 select = new OpenLayers.Layer.Vector("Selection", {styleMap:
+		                new OpenLayers.Style(OpenLayers.Feature.Vector.style["select"]), displayInLayerSwitcher: false
+		            });
+		map.addLayers([index_soviet, select]);
+		var panzoom = new OpenLayers.Control.PanZoom();
+		map.addControl(panzoom);
+
+
+
+selectControls = {
+		            controlBox: new OpenLayers.Control.GetFeature({
+		                protocol: OpenLayers.Protocol.WFS.fromWMSLayer(index_soviet, {geometryName: "geom"}),
+						click: false,
+		                box: true,
+		                hover: false,
+		                multipleKey: "shiftKey",
+		                toggleKey: "altKey"
+		            }),
+
+
+				            controlClick: new OpenLayers.Control.GetFeature({
+				                protocol: OpenLayers.Protocol.WFS.fromWMSLayer(index_soviet, {geometryName: "geom"}),
+								click: true,
+				                box: false,
+				                hover: false,
+				                multipleKey: "shiftKey",
+				                toggleKey: "altKey"
+				            })
+
+				}
+
+
+
+				selectControls.controlClick.events.register("featureselected", this, function(e) {
+	                select.addFeatures([e.feature]);
+	            });
+
+	            selectControls.controlClick.events.register("featureunselected", this, function(e) {
+	                select.removeFeatures([e.feature]);
+				});
+
+		        selectControls.controlBox.events.register("featureselected", this, function(e) {
+		                select.addFeatures([e.feature]);
+		            });
+		        selectControls.controlBox.events.register("featureunselected", this, function(e) {
+		                select.removeFeatures([e.feature]);
+		            });
+
+
+				            map.addControl(selectControls.controlBox);
+				            selectControls.controlBox.activate();
+				            map.addControl(selectControls.controlClick);
+
+           map.addControl(new OpenLayers.Control.LayerSwitcher());
+var lonLat = new OpenLayers.LonLat(lon, lat);
+   map.setCenter (lonLat, zoom);
+
+	var selectByClickBtn = new OpenLayers.Control({displayClass: "selectByClickBtn", title: "Selectare individuală"});
+	var selectByBoxBtn = new OpenLayers.Control({displayClass: "selectByBoxBtn", title: "Selectare dreptunghiulară"});
+	var clearSelectionBtn = new OpenLayers.Control.Button({displayClass: "clearSelectionBtn", trigger: clearSelection, title: "Ștergere selecție"});
+	var panel = new OpenLayers.Control.Panel({defaultControl: selectByBoxBtn});
+	panel.addControls([selectByBoxBtn, selectByClickBtn, clearSelectionBtn]);
+	panel.activateControl([selectByClickBtn]);
+	map.addControl(panel);
+
+	selectByBoxBtn.events.register("activate", this, function(e) {
+		select.destroyFeatures();
+		selectControls.controlClick.deactivate();
+		selectControls.controlBox.activate();
+	});
+
+	selectByClickBtn.events.register("activate", this, function(e) {
+		select.destroyFeatures();
+		selectControls.controlBox.deactivate();
+		selectControls.controlClick.activate();
+	});
+
+
+}
+
+
+function clearSelection() {
+	select.destroyFeatures();
+}
+
+	   function toggleControl(element) {
+	       for (var key in selectControls) {
+	           var control = selectControls[key];
+	           if (element.value == key && element.checked) {
+	               control.activate();
+				select.destroyFeatures();
+	           } else {
+	               control.deactivate();
+	           }
+	       }
+	   }
+
+       function osm_getTileURL(bounds) {
+           var res = this.map.getResolution();
+           var x = Math.round((bounds.left - this.maxExtent.left) / (res * this.tileSize.w));
+           var y = Math.round((this.maxExtent.top - bounds.top) / (res * this.tileSize.h));
+           var z = this.map.getZoom();
+           var limit = Math.pow(2, z);
+
+           if (y < 0 || y >= limit) {
+               return OpenLayers.Util.getImagesLocation() + "404.png";
+           } else {
+               x = ((x % limit) + limit) % limit;
+               return this.url + z + "/" + x + "/" + y + "." + this.type;
+           }
+       }
+</script>
+
+<p class="sdi_exercitiu">Materialul de față face parte din proiectul colaborativ eHarta. Pentru mai multe detalii consultați <a href="{{ site.base_url }}/articole/eHarta">pagina dedicată</a>. Publicarea acestui set de hărți a fost posibilă datorită contribuțiilor aduse de următorii membri ai comunității geo-spatial.org (listați în ordine alfabetică): Paul Androo-Gherghelas, Cezar Buterez, Sorin Constantin, Adrian Covasnianu, Dana Grad, Ioan-Raducu Grigoras, Robert Ille, Florin Iosub, Radu Jucan, Laurentiu Luca, Botond Mar, Andreea - Florentina Marin, Constantin Petre Marinca, Adrian Muresan, Mihai Nita, Ciprian Samoila, Dan Teodor, Corina Tudorache.</p>
+
+<h2>Introducere</h2>
+
+<p>Încă dinainte de declanșarea celui de al doilea război mondial, URSS a demarat unul din cele mai ambițiose proiecte cartografice din istorie. Scopul, cartografierea în cele mai mici detalii a întregului glob pămîntesc. Giganticul efort, strict secret, a angrenat zeci de mii de specialiști din mai multe centre topografice răspîndite pe cuprinsul uniunii. Pînă la prabușirea URSS au reusit să întocmească un număr absolut impresionant de foi de hartă, extrem de detaliate (similare cu hărțile topografice militare românești). Astfel, întrega lume a fost cartată la scările 1:1,000,000; 1:500,000; 1: 200,000. Mai toată Asia, Europa, America de Nord și nordul Africii la scara 1:100,000. URSS și Europa la scara 1:50,000. URSS și țările din estul Europei la scara 1:25,000. Un sfert din URSS 1:10,000. Mii de orașe din întreaga lume au fost cartografiate la scările 1:25,000 și 1:10,000. După colapsul URSS, proiectul a ieșit la lumină iar hărțile au început să circule prin lume. Astăzi, pe diverse site-uri, se găsesc, atît gratis cît și contra cost, foarte multe copii scanate din această impresionantă colecție cartografică.</p>
+
+<h2>Abordare practică</h2>
+
+<p>Foile de hartă, scara 1: 50,000, ce acoperă teritoriul României au fost cumpărate de la <a href="http://mapstor.com/map-sets/country-maps/romania.html">http://mapstor.com</a>. Hărțile sînt deja georeferențiate (proiecție Transverse Mercator, datum Pulkovo 1942) folosind 9 puncte de control și sînt livrate în format <a href="http://www.oziexplorer.com/">OziExplorer</a> (fișier .gif + fișier .map). După descărcare am constatat că mai multe foi de hartă au puncte de control greșit poziționate. Am decis refacerea georeferențierii, în acest scop cerînd ajutorul comunității geo-spatial.org în cadrul unei noi campanii <a href="{{ site.base_url }}/articole/eharta-campania-ii">eHarta</a>. Cu ajutorul GDAL am georeferențiat hărțile în proiecția nativă, folosind punctele de control colectate de comunitate, le-am reproiectat în Stereo70 și am creat un mozaic național.</p>
+
+<h2>Drepturile de autor</h2>
+
+<p>Imediat după ce am aflat de disponibilitatea acestor seturi de date ne-am pus problema drepturilor de autor. Site-urile de unde acestea puteau fi descărcate nu făceau nicio precizare în acest sens. După mai multe căutări pe Internet am aflat următoarele:
+
+<ul>
+	<li>Conform lui John Davies (<a href="http://sovietmaps.com">sovietmaps.com</a>): URSS nu a semnat <a href="http://en.wikipedia.org/wiki/Berne_Convention_for_the_Protection_of_Literary_and_Artistic_Works">Convenția de la Berna</a> cu privire la protecția internațională a dreptului de autor. Ca atare, la momentul producerii, hărțile nu intrau sub protecția legilor în afara URSS. Ulterior (1996) Rusia a semnat această convenție. Nu este însă clar dacă acest lucru are efect retroactiv. Mai mult, nu se știe nimic despre regimul hărților aflate în depozite/colecții din țări ce intrau în componența fostei URSS, altele decît Rusia.</li>
+	<li>În prefața cărții <a href="http://www.eastviewpress.com/Books/RussianMilitaryMapping.aspx">Russian Military Mapping : a Guide to the Most Comprehensive Source of Global Geospatial Intelligence</a>, editată de <a href="http://www.geospatial.com/">East View Cartographic</a> (unul din principalii distribuitori a hărților sovietice) în 2005, se precizează că aceste hărți sînt acum în domeniul public: <i>"We hope that the present volume will help illuminate this  exceptional information resource, which now comprises an important part of the public domain"</i>.</li>
+	<li>Am scris un e-mail celor de la <a href="http://mapstor.com/map-sets/country-maps/romania.html">http://mapstor.com</a>, întrebînd atît de problema drepturilor de autor cît și dacă putem redistribui hărțile pe geo-spatial.org sub formă de date brute și servicii. Răspunsul, primit de la doamna Olga Tumilovich, a fost următorul:
+
+<blockquote><i>"Dear Vasile Craciunescu,<br/>
+
+As for the usage of our maps, we support every iniciate of improving the quality of maps availible on the web. So you are free to use our maps in project that you have described.<br/>
+
+As for the linecence the thing is that soviet topographic maps are not copyrighted since the Soviet Union was not a signatory to the Berne Convention on copyright."</i></blockquote></li>
+
+<h2>Accesarea hărților folosind servicii online</h2>
+
+<ul>
+	<li><a href="{{ site.base_url }}/geoserver/ows?service=WMS&request=GetCapabilities">WMS</a></li>
+	<li><a href="{{ site.base_url }}/geoserver/gwc/service/wms?service=WMS&version=1.1.1&request=getcapabilities&tiled=true">WMTS</a></li>
+	<li><a href="/file_download/25410">KML</a></li>
+</ul>
+
+<h2>Download</h2>
+
+<p>Hărțile georeferențiate și decupate după caroiaj (util pentru racordarea unor planșe vecine) pot fi descărcate individual în format GeoTiff (compresate DEFLATE). Algoritmul Deflate permite compresarea informației fără pierdere de calitate. Doar mozaicul național, din rațiuni de spațiu, a fost compresat JPEG cu profil YCBCR.</p>
+
+<p>Hărțile negeoreferențiate (utile pentru a studia informația marginală) pot fi descărcate în format JPEG sau vizualizate online într-o aplicație interactivă bazată pe <a href="http://zoomify.com/">Zoomify</a>.</p>
+
+<p>Am considerat utilă includerea unor filtre care să permită identificarea rapidă a trapezelor din zona de interes. Practic, utilizatorii pot folosi o hartă interactivă a României pentru a selecta zona de interes cu ajutorul mouse-ului (drag-and-release daca se folosește instrumentul de selectare de tip dreptunghi, sau click-stînga, dacă se folosește instrumentul de selectare punctual). Pentru a face selecții multiple se ține apăsată tasta <i>Shift</i> în timp ce se acționează mouse-ul. Identic, pentru a comuta starea uneia sau a mai multor foi de hartă, se ține apăsată tasta <i>Alt</i>. Selecția curentă poate fi ștearsă folosind butonul "Ștergere Selecție". Cu ajutorului icon-ului "+" din partea din dreapta-sus a hărții se poate schimba harta din fundal (utilizatorul poate alege între OpenStreetMap și versiunea mozaicată a hărților) și se poate ascunde/afișa caroiajul cu extinderea hărților geologice. Navigarea în hartă (zoom și pan) se face cu ajutorul controlului din partea dreapa-sus a hărții. Confirmarea operațiunii de filtrare se face prin apăsarea butonului Aplicare filtru. Rezultatul: afișarea în tabel doar a foilor de hartă cuprinse de selecția interactivă. Cu o funcționalitate similară vin și filtrelor indicativ și nume. În caseta de download, care apare în urma selectării unei foi de hartă, se poate opta pentru descărcarea hărții și a textelor explicative în formatele amintite mai sus.</p>
+
+		<script type="text/javascript">
+			function openImgPreview(imagine){
+				var ST_newWindow;
+				ST_newWindow = window.open(imagine,"popup","width=550,height=520");
+			}
+		</script>
+
+<img src="../myincludes/pictures/map/unpx.png" onload="initMap()">
+
+
+		<div id="filtruTrapeze" style="width: 582px;">
+			<ul>
+				<li><a href="#filtru-1"><span>Hartă</span></a></li>
+				<li><a href="#filtru-3"><span>Indicativ 50k</span></a></li>
+		 		<li><a href="#filtru-5"><span>Mozaic</span></a></li>
+			</ul>
+
+			<!-- Filtru 1: Harta -->
+			<div id="filtru-1">
+				<div id="map"></div>
+				<form id="coordonate" name="coordonate">
+					<br />
+					<input type="button" id="aplicaFiltru" name="aplicaFiltru" value="Aplica filtrul" style="margin-right: 5px;"/>
+				</form>
+
+				<div id="tabelTrapezeContainer" name="tabelTrapezeContainer" style="width: 480px;">
+				</div>
+			</div>
+
+			<!-- Filtru 3: Indicativ 50k-->
+			<div id="filtru-3">
+				<txp:php>
+				global $hostOwn;;
+				global $databaseOwn;
+				global $userOwn;
+				global $passOwn;
+				require_once('php/myown/functions/functii.php');
+					$legaturi_trapeze = tablou('earth', 'eharta_soviet_50k', 'where status=3', 'indicativ');
+					echo '<form id="indicativSelectTrapeze50k" name="indicativSelectTrapeze50k" action="../php/myown/getmapsheets_soviet50k.php" method="post">';
+					foreach ($legaturi_trapeze as $trapez){
+						echo '
+							<div style="width: 100px; float: left; overflow: hidden; white-space: nowrap;">
+							<input type="checkbox" id="'.$trapez['indicativ'].'"  name="'.$trapez['indicativ'].'"  value="'.$trapez['indicativ'].'"/><label for="'.$trapez['indicativ'].'"> '.$trapez['indicativ'].'</label></div>';
+					}
+				</txp:php>
+					<br />
+					<input type="hidden" name="qType" id="qType" value="3" />
+					<br />
+					<input type="submit" id="aplicaFiltruTrapez" name="aplicaFiltruTrapez" value="Aplica filtrul" style="margin-right: 5px; margin-top: 15px;"/>
+					</form>
+					<div style="clear: both;"></div>
+					<div id="tabelTrapezeContainerIndicativ50k" name="tabelTrapezeContainerIndicativ50k" style="width: 480px;" ></div>
+			</div>
+
+			<!-- Filtru 5: All -->
+			<div id="filtru-5">
+					<table id="tabelTrapeze" name="tabelTrapeze" style="width: 560px;">
+						<tr>
+							<th>Mozaic</th>
+							<th>Vizualizare</th>
+							<th>Download</th>
+							<th>Google Earth</th>
+						</tr>
+						<tr id="mozaicSoviet" name="mozaicSoviet">
+							<td style="vertical-align: middle; font-weight: bold; clear: both;"><img src="/images/mozaic_soviet_50k_thumb.png" /></td>
+							<td style="vertical-align: middle; clear: both;">
+								<a target="blank" href="{{ site.base_url }}/geoserver/geospatial/wms?service=WMS&version=1.1.0&request=GetMap&layers=geospatial:mozaic_soviet_50k&styles=&bbox=131146.90628047846,240724.85044557217,895194.4939547718,740965.0617246781&width=512&height=335&srs=EPSG:31700&format=application/openlayers"><img src="/images/preview.png" border="0" alt="Vizualizare" title="Vizualizare"></a>
+							</td>
+							<td style="vertical-align: middle; clear: both;"><a href="/file_download/29252">GeoTiff (2.8 GiB)</a></td>
+							<td style="vertical-align: middle; clear: both;"><a href="/file_download/29253">KML (1 KiB)</a></td>
+						</tr>
+					</table>
+			</div>
+		</div>
