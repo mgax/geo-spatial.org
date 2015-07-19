@@ -53,7 +53,7 @@ def export(slug):
         .replace('http://www.geo-spatial.org',
                  '{{ site.base_url }}')
     )
-    folder = article.section
+    folder = '_' + article.section
     with open(folder + '/' + slug + '.html', 'wb') as f:
         f.write('---\n')
         f.write('title: ' + jsonify(article.title) + '\n')
@@ -79,6 +79,17 @@ def dump_authors():
             f.write('\n')
 
 
+TEST_NAMES = [
+    'adaugarea-i-editarea-datelor-in-openstreetmap-folosind-josm-func-ii-avansate',
+    'doilasuta2013',
+    'georeferentierea-imaginilor-satelitare-google-folosind-qgis-si-josm',
+    'habsburg-google-earth',
+    'hartile-sovietice-50k',
+    'porto-franco-sulina',
+    'preluarea-datelor-din-openstreetmap-folosind-overpass',
+]
+
+
 arg = sys.argv[1]
 
 if arg == '--users':
@@ -86,4 +97,9 @@ if arg == '--users':
     dump_authors()
 else:
     session = create_session('geospatial')
-    export(arg)
+    if arg == '--test':
+        for name in TEST_NAMES:
+            print name
+            export(name)
+    else:
+        export(arg)
