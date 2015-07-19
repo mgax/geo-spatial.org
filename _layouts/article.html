@@ -12,7 +12,7 @@ layout: page
 <div class="item_full">
 <h1 class="titlu_full"><a rel="bookmark" href="{{ page.url }}">{{ page.title }}</a></h1>
 
-<h4 class="autor_full">de {% include author-link.html authorid=page.authorid %}</h4>
+<h4 class="autor_full">de {% include author.html authorid=page.authorid %}</h4>
 
 <div class="introducere" id="introducere">
 <h5 class="info_full">Publicat la {{ page.time | date: "%d %b %Y" }} | Secţiunea: <a href="http://www.geo-spatial.org/articole/">Articole</a> | Categoria: <a href="http://www.geo-spatial.org/articole/?c=art_cartografie">Cartografie</a>/<a href="http://www.geo-spatial.org/articole/?c="></a></h5>
