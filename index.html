@@ -9,8 +9,8 @@
   Mai multe informații referitoare la proiectul geo-spatial.org puteți găsi în secțiunea <a class="download_image" href="{{ site.base_url }}/info">Info</a>.</br /></em></p>
   </div>
 
-  {% assign article_list = site.documents |where:"homepage",true |sort:"time" %}
-  {% for page in article_list reversed limit:3 %}
+  {% assign article_list = site.documents |where:"homepage",true |sort:"time" |reverse %}
+  {% for page in article_list limit:5 %}
     {% include teaser.html page=page %}
   {% endfor %}
 </div>
