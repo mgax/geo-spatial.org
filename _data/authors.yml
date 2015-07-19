@@ -1,201 +1,228 @@
 - id: admin
   name: Vasile Crăciunescu
+  description: "Cercetător ştiinţific în cadrul Laboratorului de Teledetecţie şi GIS – Administraţia Naţională de Meteorologie. Domenii de interes: cartografie (webmapping, rapid mapping), GIS, teledetecţie. Vasile este unul din fondatorii geo-spatial.org şi poate fi contactat la adresa <a href=\"mailto:vasile@geo-spatial.org\">vasile [at] geo-spatial.org </a>."
 
 - id: stefan
   name: Ștefan Constantinescu
-
-- id: nitu
-  name: Constantin Nițu
-
-- id: adorian
-  name: Adorian Ardelean
+  description: "Geomorfolog costier, activează în cadrul Facultăţii de Geografie – Universitatea din Bucureşti şi a Staţiunii de Cercetări Marine şi Fluviale Sf. Gheorghe. Domenii de interes: aplicaţii ale tehnicilor de GIS şi teledetecţie specifice mediului costier. Ştefan este unul din fondatorii geo-spatial.org şi poate fi contactat la adresa <a href=\"mailto:stefan.t.constantinescu@gmail.com\">stefan.t.constantinescu [at] @gmail.com</a>."
 
 - id: cristi
   name: Cristian Flueraru
-
-- id: ben
-  name: Ben Discoe
-
-- id: publisher
-  name: publisher@geo-spatial.org
+  description: "Cercetător ştiinţific în cadrul Laboratorului de Teledetecţie şi GIS – Administraţia Naţională de Meteorologie.  Domenii de interes: determinarea extinderii şi proprietăţilor stratului de zăpadă folosind tehnici de teledetecţie, procesarea şi integrarea în diferite aplicaţii a imaginilor MODIS, utilizarea combinată a tehnicilor de GIS-teledetecţie pentru monitorizarea fenomenului de secetă. Cristian poate fi contactat la adresa <a href=\"mailto:cristif@gmail.com\">cristif [at] gmail.com</a>."
 
 - id: rus
   name: Ioan Rus
+  description: "Activează în cadrul Facultăţii de Geografie a Universităţii \"Babeş/Bolyai\" din Cluj. Domenii de interes: Cartografie, Istoria cartografiei, Topografie, GIS, Geomatică, Substrat şi peisaj geografic. Ioan poate fi contactat la una din adresele <a href=\"mailto:nelurus@geografie.ubbcluj.ro\">nelurus [at] geografie.ubbcluj.ro</a> sau <a href=\"mailto:nelurus@yahoo.com\">nelurus [at] yahoo.com</a>."
 
 - id: naeroman
   name: Nicolae Roman
-
-- id: sandricionut
-  name: Ionuț Șandric
-
-- id: terenteml
-  name: Mihai Terente
-
-- id: jano
-  name: Jano Ferencik
+  description: "Activează în cadrul Facultăţii de Biologie, Geografie şi Geologie a Universităţii \"Alexandru Ioan Cuza\" din Iaşi. Domenii de interes: teledetecţie, fotointerpretare, GIS, biogeografie, gestiunea şi valorificarea resurselor biosferei, multimedia şi tehnică fotografică. Nicolae poate fi contactat la adresa <a href=\"mailto:naeroman@yahoo.com\">naeroman [at] yahoo.com</a>."
 
 - id: mariusj
   name: Marius Jigmond
+  description: "Proaspăt absolvent al Facultăţii de Geografie, specializarea GIS, din cadrul Universităţii Texas State. Domenii de interes: GIS (probleme de mediu), interpretarea imaginilor satelitare, oceanografie, climatologie, meteorologie şi altele mai putin ştiinţifice: fotografie, alpinism, drumeţii şi crearea de hărţi folosind date GPS. Marius poate fi contactat la adresa <a href=\"mailto:mjigmond@gmail.com\">mjigmond[at] gmail.com</a>."
 
 - id: bogdanm
   name: Bogdan Moroșanu
-
-- id: mihaic99
-  name: Mihai Cosmin
-
-- id: sorin
-  name: Sorin Andrei
+  description: "Absolvent al Facultăţii de Hidrotehnică, specializarea geodezie, din cadrul Universităţii Gheorghe Asachi - Iaşi. Domenii de interes: geodezie, carografie, topografie, GIS, programare. Bogdan poate fi contactat la adresa <a href=\"mailto:morosanubogdan@yahoo.com\">morosanubogdan [at] yahoo.com</a>."
 
 - id: florini
   name: Florin Iosub
-
-- id: bogdanc
-  name: Bogdan Candrea
+  description: "Absolvent al Facultăţii de Geografie, specializarea Sisteme Geografice Informaţionale, din cadrul Universităţii din Bucureşti. Master în Managementul Resurselor Naturale. Domenii de interes: GIS , teledetecţie, modelare hidrologică, webmapping. Florin poate fi contactat la adresa <a href=\"mailto:florin.iosub@yahoo.com\">florin.iosub [at] yahoo.com</a>."
 
 - id: corinaal
   name: Corina Alecu
+  description: "Cercetător ştiinţific în cadrul Laboratorului de Teledetecţie şi GIS – Administraţia Naţională de Meteorologie. Domenii de interes: teledetectie (metode de prelucrare a imaginilor satelitare). Corina poate fi contactata la adresa <a href=\"mailto:corinaalecu@yahoo.com\">corinaalecu [at] yahoo.com</a>."
 
-- id: cbalint
-  name: Cristian Balint
-
-- id: dumitrescu
-  name: Alexandru Dumitrescu
+- id: bogdanc
+  name: Bogdan Candrea
+  description: "Inginer silvic, activează în cadrul Facultății de Silvicultură și Exploatări Forestiere, Universitatea Transilvania - Brașov. Domenii de interes: GIS (aplicații în domeniul silvic), teledetecție (metode de prelucrare a imaginilor satelitare), GPS. Bogdan poate fi contactat la adresa <a href=\"mailto:bogdancandrea@yahoo.com\">bogdancandrea [at] yahoo.com</a>."
 
 - id: ovejanu
   name: Ionuț Ovejanu
+  description: "Asistent univ. drd. al Facultăţii de Geografie – Universitatea din Bucureşti şi cercetator stiintific în cadrul Stațiunii de Cercetări Marine şi Fluviale Sf. Gheorghe. Domenii de interes: Sisteme Open Source, GIS, Geomorfologie Costiera. Ionuț poate fi contactat la adresa <a href=\"mailto:ionut@ovejanu.eu\">ionut [at] ovejanu.eu</a>."
+
+- id: cbalint
+  name: Cristian Balint
+  description: "Fondator al grupului de interese GIS în proiectul Fedora. A întemeiat în Oradea firma Geo Map SRL, una din puţinele companii româneşti care oferă servicii geospaţiale bazate pe aplicaţii open source. Cristian poate fi contactat la adresa <a href=\"mailto:cristian.balint@gmail.com\">cristian.balint [at] gmail.com</a>."
+
+- id: dumitrescu
+  name: Alexandru Dumitrescu
+  description: "Cercetător ştinţific în cadrul Secţiei  de Climatologie – Administraţia Naţională de Meteorologie. Domenii de interes:  aplicaţii ale tehnicilor GIS  şi teledetecţie în climatologie şi meteorologie.  Alexandru  poate fi contactat la adresa <a href=\"mailto:alexandru.dumitrescu@gmail.com\">alexandru.dumitrescu [at] gmail.com</a>.\r\n"
 
 - id: tibi
   name: Tiberius Tomoiagă
+  description: "Cercetător pricipal gradul III în cadrul Agenţiei de Cercetare pentru Tehnică şi Tehnologii Militare. Domenii de interes: GIS, teledetecție, geodezie, gravimetrie, cartografie, programare, dezvoltare de aplicații GIS în domenii militare. Tiberius poate fi contactat la dresa <a href=\"mailto:t_tibis@yahoo.com\">t_tibis [at] yahoo.com</a> sau <a href=\"mailto:tiberius.tomoiaga@acttm.ro\">tiberius.tomoiaga@acttm.ro</a>"
 
 - id: jock
   name: Ion Nedelcu
+  description: "Absolvent al Academiei Tehnice Militare, specialitatea Topogeodezie, Master în Teledetecție obținut la GDTA (Toulouse - Franta). În prezent este cercetător stiințific la Agenția Spațială Română. Domenii de interes: GIS, teledetecție, geoinformatică, tehnologii geospațiale. Ion poate fi contactat la <a href=\"mailto:ion.nedelcu@rosa.ro\">ion.nedelcu [at] rosa.ro</a>."
 
 - id: mdnita
   name: Mihai-Daniel Niță
+  description: "Viitor absolvent al Facultăţii de Silvicultură şi Exploatări Forestiere Braşov, în prezent angajat al SC FOREST DESIGN SRL. Domenii de interes: GIS – aplicaţii în Hidrologie – Corectarea Torenţilor; Fotogrametrie şi Teledetecţie. Mihai poate fi contactat la adresa <a href=\"mailto:nita_mihai_daniel@yahoo.com\">nita_mihai_daniel [at] yahoo.com</a>."
 
-- id: marbotond
-  name: Mar Botond
+- id: terenteml
+  name: Mihai Terente
+  description: "Masterand în inginerie geologică ambientală la facultatea de Geologie şi Geofizică a Universităţii din Bucureşti, asistent de cercetare la Institutul de Speologie Emil Racoviţă, Bucureşti. Domenii de interes: analiză spaţială, geomorfologie şi geostatistică. Mihai poate fi contactat la adresa <a href=\"mailto:terenteml@gmail.com\">terenteml [at] gmail.com</a>."
 
-- id: mateid
-  name: Matei Domnița
-
-- id: ciprian
-  name: Ciprian Samoilă
+- id: mihaic99
+  name: Mihai Cosmin
+  description: "Absolvent al Facultății de Automatica și Informatică București, în prezent Șef proiecte al firmei Blominfo-Geonet. Domenii de interes: topografie, cadastru, GIS, baze de date, LiDAR, fotogrammetrie. Mihai poate fi contactat la <a href=\"mailto:mihaic99@gmx.net\">mihaic99 [at] gmx.net</a>."
 
 - id: ctudose
   name: Cornel Tudose
-
-- id: cove
-  name: Adrian Covasnianu
+  description: "Lect.univ.dr. în cadrul Facultăţii de Geografie – Universitatea din Bucureşti. Domenii de interes:  GIS, cartografie computerizată, sisteme de analiză spaţială, utilizarea MNA în analiza reliefului. Cornel poate fi contactat la adresa <a href=\"mailto:ctudose@geo.unibuc.ro\">ctudose[at]geo.unibuc.ro</a>"
 
 - id: mariusb
   name: Marius Budileanu
+  description: "Doctorand în cadrul Facultăţii de Geografie, Universitatea din Bucureşti. Domenii de interes: geomorfologie costieră, GIS şi teledetecţie aplicate în mediul costier. Marius poate fi contactat la adresa <a href=\"mailto:mariusbudileanu@yahoo.com\">mariusbudileanu[at]yahoo.com</a>"
 
 - id: denis
   name: Denis Mihăilescu
-
-- id: cipriant
-  name: Ciprian Talabă
+  description: "Cercetător în cadrul Laboratorului de Teledetecţie şi GIS – Administraţia Naţională de Meteorologie. Domenii de interes: cartografie, teledetecţie, GIS, topografie, cadastru. Denis poate fi contactat la adresa <a href=\"mailto:denis.mihailescu@gmail.com\">denis.mihailescu [at] gmail.com</a>."
 
 - id: sbilasco
-  name: Ștefan Bilașco
+  name: Ștefan Bilaşco
+  description: "În prezent activează ca cercetător la Colectivul de Geografie al Academiei Române Filiala Cluj, având ca domenii de interes, GIS, Modelare hidrologică, Topografie, Cartografie digitală. Teza de doctorat susținută în Mai 2008 la Universitatea Babeş-Bolyai din Cluj-Napoca, Facultatea de Geografie. Ştefan poate fi contactat la una din adresele <a href=\"mailto:sbilasco@geografie.ubbcluj.ro\">sbilasco[at] geografie.ubbcluj.ro</a> sau <a href=\"mailto:sbilasco@yahoo.com\">sbilasco [at] yahoo.com</a>."
 
-- id: anisoara
-  name: Anișoara Irimescu
+- id: cove
+  name: Adrian Covăsnianu
+  description: "Geograf doctorand în cadrul Facultăţii de Geografie-Geologie a Universităţii \"Alexandru Ioan Cuza\" din Iaşi. Domenii de interes: GIS, urbanism şi amenajarea teritoriului (angajat al S.C. Arcadis TGH Iaşi), LIDAR aeropurtat (Enviroscopy S.R.L.), evaluarea riscurilor naturale şi antropogene, geografie umana. Adrian poate fi contactat la adresa: <a href=\"mailto:covasnianu.adrian@gmail.com\">covasnianu.adrian [at] gmail.com</a>."
+
+- id: raducu
+  name: Ioan-Răducu Grigoraș
+  description: "Absolvent al Facultăţii de Geografie şi Geologie a Universităţii Al. Ioan Cuza Iaşi, în curs de finalizare a masterului \"Mediul Actual şi Dezvoltarea Durabilă\" din cadrul  aceleiaşi facultăţi şi angajat în domeniul urbanism şi amenajarea teritoriului (Arcadis TGH S.R.L. Iaşi). Domenii de interes: SIG, urbanism şi amenajarea teritoriului, evaluarea riscurilor naturale şi antropogene, topografie. Răducu poate fi contactat la una din adresele <a href=\"mailto:giovanny_xs@yahoo.com\">giovanny_xs [at] yahoo.com</a> sau <a href=\"mailto:ioan.grigoras@arcadistgh.ro\">ioan.grigoras [at] arcadistgh.ro</a>. "
 
 - id: aura
   name: Aura-Mihaela Vîrgolici (Mocanu)
+  description: "Absolventă a facultăţii de “Informatică Economică” (ASE),  master “Baze de date – suport pentru afaceri”. În prezent, doctorand  în informatică economică şi programator Oracle în cadrul MGI (Metro Group) România. Domenii de interes: GIS, baze de date, programare, integrarea sistemelor informatice. Aura poate fi contactată la adresa <a href=\"mailto:mocanuaura@yahoo.com\">mocanuaura [at] yahoo.com</a>."
+
+- id: anisoara
+  name: Anișoara Irimescu
+  description: "Cercetător ştiinţific în cadrul Laboratorului de Teledetecţie şi GIS - Administraţia Naţională de Meteorologie. Domenii de interes: teledetecţie, SIG. Anişoara poate fi contactată la adresa <a href=\"mailto:anisoara.irimescu@gmail.com\">anisoara.irimescu [at] gmail.com."
 
 - id: codrina
   name: Codrina Maria Ilie
+  description: "Absolventă a Facultăţii de Geografie din cadrul Universităţii din Bucureşti, specializarea Cartografie cu elemente de cadastru. Masterandă anul II în Cartografie-Geomorfologie.Domenii de interes: GIS, cartografie, analiză spaţială. Codrina poate fi contactată la adresa <a href=\"mailto:codrinamariailie@gmail.com\">codrinamariailie [at] gmail.com</a>."
+
+- id: ciprian
+  name: Ciprian Samoilă
+  description: "Absolvent al Facultăţii de Ştiinţe ale Naturii, Universitatea Ovidius Constanţa (UOC), specializarea Ecologie şi Protecţia Mediului. În prezent, sunt doctorand în Biologie şi asistent cercetare la UOC. Domenii de interes: Green Map, GIS aplicat în managementul biodiversităţii, conservarea naturii; Species Distribution Modeling, Ecological Niche Modeling, Habitat Suitability; utilizarea GIS şi teledetecţiei în cartarea şi monitorizarea ecologică; biogeografie, cartografie geobotanică. Ciprian poate fi contactat la adresa <a href=\"mailto:csammy13@yahoo.co.uk\">csammy13 [at] yahoo.co.uk</a>."
+
+- id: mateid
+  name: Matei Domnița
+  description: "Doctorand în facultatea de Geografie din cadrul Universităţii \"Babeş/Bolyai\" din Cluj-Napoca. Absolvent al facultăţii de Informatică din cadrul UBB şi al masteratului în GIS. Domenii de interes: GIS aplicat în hidrologie, cartografie, analiză spaţială, webmapping. Matei poate fi contactat la adresa <a href=\"mailto:mdomnita@gmail.com\">mdomnita [at] gmail.com</a>."
+
+- id: nitu
+  name: Constantin Nițu
+  description: "Profesor universitar la Academia Tehnică Militară, conducator de doctorat. Domenii de interes: geodezie, sisteme informatice geografice, cartografie asistată de calculator, teledetecție, webmapping, GPS, LBS. Constantin poate fi contactat la una din adresele <a href=\"mailto:nitu.constantin@yahoo.com\">nitu.constantin [at] yahoo.com</a>, <a href=\"mailto:nituco@gmail.com\">nituco [at] gmail.com</a> sau <a href=\"mailto:constantin.nitu@g.unibuc.ro\">constantin.nitu [at] g.unibuc.ro</a>. "
 
 - id: danteodor
   name: Dan Teodor
-
-- id: test
-  name: Test Test
+  description: "Absolvent al Facultăţii de Geografie, specializarea Știința Mediului, din cadrul Universităţii \"Babeș-Bolyai\" din Cluj-Napoca. Master în Știința Mediului. În prezent responsabil GIS  la ICPDR  (Comisia Internațională pentru Protecția Fluviului Dunarea). Domenii de interes: GIS , SDI, cartogarfie, analiză spațială, teledetecţie, webmapping. Dan poate fi contactat la adresele: adresa <a href=\"mailto:teo_dan@yahoo.com\">teo_dan [at] yahoo.com</a>, <a href=\"mailto:teodor.dan@gmail.com\">teodor.dan [at] gmail.com</a>."
 
 - id: sorin_tkd
   name: Sorin Constantin
+  description: "Sorin este absolvent al Facultăţii de Geografie din cadrul Universităţii din Bucureşti, specializarea Calitatea Mediului. A absolvit un master în Managementul resurselor naturale (Catedra UNESCO). Domenii de interes: GIS, cartografie, teledetecţie. Sorin poate fi contactat la adresa <a href=\"mailto:sorin_tkd@yahoo.com\">sorin_tkd [at] yahoo.com </a>."
 
 - id: corina_ww
   name: Corina Tudorache
+  description: "Absolventă a Facultăţii de Geografie, specializarea Ştiinţa Mediului, din cadrul Universităţii din Bucureşti. Absolventă a Master-ului “Inginerie geologică ambientală” Facultatea de Geologie şi Geofizică, Universitatea din Bucureşti. Activez ca şi consultant de mediu. Domenii de interes: GIS aplicat în cartografie, analiza spatiala, modelarea poluărilor. Corina poate fi contactată la adresa <a href=\"mailto:corina_ww@yahoo.com\">corina_ww [at] yahoo.com</a>."
 
 - id: gabor
   name: Gábor Timár
-
-- id: icristea
-  name: Ionuț Cristea
+  description: "Activează în cadrul Universității Eötvös din Budapesta, Departamentul de Geofizică și Științe Spațiale. Domenii de interes: cartografie istorică, GIS, GPS, analiza spațială, teledetecţie, hidrologie. Gábor poate fi contactat la adresa <a href=\"mailto:timar@ludens.elte.hu\">timar [at] ludens.elte.hu</a>."
 
 - id: mariaradoane
   name: Maria Rădoane
+  description: "Profesor la Universitatea \"Ștefan cel Mare\" Suceava, Departamentul de Geografie. Domenii de interes: geomorfologie dinamică și aplicată, procese fluviale, lacuri de baraj, ravene, dinamica sedimentelor, analiza cantitativă în geografie, metode de cercetare în geomorfologie. Maria poate fi contactată la adresa <a href=\"mailto:radoane@usv.ro\">radoane [at] usv.ro</a>."
 
 - id: nicolaeradoane
   name: Nicolae Rădoane
+  description: "Profesor la Universitatea \"Ștefan cel Mare\" Suceava, Departamentul de Geografie. Domenii de interes: geografia fizică a României, geomorfologie dinamică, geomorfologie regională, geomorfologie aplicată, cartografiere geomorfologică, geomorfologia bazinelor hidrografice mici. Nicolae poate fi contactat la adresa <a href=\"mailto:radoane@usv.ro\">radoane [at] usv.ro</a>."
+
+- id: icristea
+  name: Ionuț Cristea
+  description: "Asistent universitar în cadrul Departamentului de Geografie, al Universităţii din Suceava.  Domenii de interes: geomorfologie aplicată, geoinformatică, modificări istorice ale mediului. Ionuț poate fi contactat la adresa <a href=\"mailto:icristea@usv.ro\">icristea [at] usv.ro</a>."
 
 - id: cezarm8
   name: Cezar Buterez
-
-- id: vasileestan
-  name: Vasile Cristian Stan
+  description: "Doctorand în geografie umană în cadrul Facultății de Geografie a Universității din București. Domenii de interes: geografie istorică, toponimie, geografia religiei, geografia transporturilor, cartografie, GIS. Cezar poate fi contactat la adresa <a href=\"cezar_m8ro@yahoo.com.\">cezar_m8ro [at] yahoo.com</a>."
 
 - id: viorel
   name: Viorel Chendeș
-
-- id: chris_mavri
-  name: Cristina Mavriche
+  description: "Cercetător ştiinţific în cadrul I.N.H.G.A. şi I.G.A.R., absolvent al Facultăţii de Geografie şi al cursurilor postuniversitare “Ingineria resurselor de apă - specializarea G.I.S.” din cadrul Facultăţii de Hidrotehnică. Domenii de interes: aplicaţii GIS în hidrologie şi geografie fizică, riscuri naturale, în special inundabilitate. Viorel poate fi contactat la adresa <a href=\"viorel.chendes@hidro.ro\">viorel.chendes  [at] hidro.ro </a> sau  <a href=\"chendesviorel@yahoo.com\">chendesviorel   [at] yahoo.com </a>."
 
 - id: bogdan71
   name: Bogdan Andrei Mihai
+  description: "Profesor la Facultatea de Geografie a Universitatii din Bucuresti, Departamentul de Geomorfologie-Pedologie-Geomatica, geomorfolog cu domenii de interes in teledetectie (analiza imaginilor de teledetectie cu aplicatii in cartografie), SIG (modelarea digitala a hazardului de alunecare) si cartografierea digitala a mediilor montane. In anul 2003 a initiat studiul teledetectiei pe baze digitale in cadrul Laboratorului de Aerofotointerpretare Geografica si Teledetectie al Facultatii de Geografie. Cadru didactic asociat, din anul 2010, la masteratul de Sisteme Informatice Geografice, la Catedra de Geografie, Universitatea de Vest din Timisoara. Bogdan poate fi contactat la adresa <a href=\"mailto:boogdan71@yahoo.com\">boogdan71 [at] yahoo.com</a>."
 
 - id: robert
   name: Robert Ille
+  description: "Masterand al Facultății de Geografie din cadrul Universității de Vest din Timișoara, specializarea Sisteme Informaţionale Geografice - GIS. Domenii de interes: GIS, teledetecţie, geovizualizare, modelare 3D, LBS, Mobile GIS. Robert poate fi contactat la adresa <a href=\"mailto:illerobert@gmail.com\">illerobert[at]gmail.com</a>."
+
+- id: chris_mavri
+  name: Cristina Mavriche
+  description: "Absolventă a Facultății de Geografie, Universitatea de Vest din Timișoara. Master GIS în Planning Teritorial, Universitatea Babeş-Bolyai din Cluj-Napoca. Domenii de interes: GIS, cartografie, geomorfologie, analiză spaţială, web-mapping, programare. Cristina poate fi contactată la adresa: <a href=\"mailto:chris_mavri@yahoo.com\">chris_mavri [at] yahoo.com</a>."
 
 - id: felipe
   name: Florin Filip
+  description: "Cercetător științific, activează în cadrul Universității din București și a firmei FAD SMART TECHNOLOGY. Florin poate fi contactat la adresa <a href=\"mailto:felipe_fad@yahoo.com\">felipe_fad[at]yahoo.com</a>."
 
 - id: andreinacu
   name: Andrei Nacu
+  description: "Viitor absolvent al Facultăţii de Geografie, specializarea Cartografie, al UBB Cluj-Napoca. Colaborator la diverse proiecte GIS si open map: GoogleMaps, OpenStreetMap (OSM), Wikimedia Commons (Category:Cartography).  Domenii de interes: GIS, fotogrametrie şi teledetecţie, cartografie istorică, grafică şi design vectorial. Andrei poate fi contactat la adresa <a href=\"mailto:andreinacu1@yahoo.com\">andreinacu1[at]yahoo.com</a>."
 
 - id: dragosciortin
   name: Dragoș Ciortin
+  description: "Tehnician automatizări. În prezent activează ca \"fuel station manager\", având ca domenii de interes, GIS, Topografie, Cartografie. Dragoș poate fi contactat la <a href=\"mailto:dragos.ciortin@yahoo.com\">dragos.ciortin[at]yahoo.com</a>."
 
 - id: zsombor
   name: Zsombor Bartos-Elekes
+  description: "Activează în cadrul Facultăţii de Geografie a Universităţii \"Babeş-Bolyai\" din Cluj. Domenii de interes: cartografie, istoria cartografiei, toponimie. Zsombor poate fi contactat la adresa <a href=\"mailto:bezsombor@yahoo.com\">bezsombor [at] yahoo.com</a>."
 
 - id: bogdanolariu28
   name: Bogdan Olariu
-
-- id: mihaicroicu
-  name: Mihai Croicu
+  description: "Absolvent al Facultății de Geografie, specializarea Știința Mediului, Universitatea din București, în prezent masterand la \"Evaluarea integrată a stării mediului\" în cadrul  aceleași instituții. Domenii de interes:  geografia mediului, geomorfologie montană, cartografie, GIS. Bogdan poate fi contactat la adresa <a href=\"mailto: bogdanolariu28@yahoo.com\">bogdanolariu28[at]yahoo.com</a>."
 
 - id: andreeam
-  name: Andreea Marin
-
-- id: robertraiz
-  name: Robert Raiz
+  name: Andreea - Florentina Marin
+  description: "Studentă în cadrul Facultății de Geografie, Universitatea \tdin București, Specializarea Geografie. Domenii de interes: GIS, cartografie, teledetecție, \tgeografie rurală. Andreea poate fi contactată la adresa: <a href=\"mailto: andreeam_2008@yahoo.com\">andreeam_2008 [at] yahoo.com</a>."
 
 - id: danclinci
   name: Sorin Dan Clinci
+  description: "Arhitect la Biroul de Arhitectură Triedrum, membru în Consiliul de Conducere Teritorial al Ordinului Arhitecților din România – filiala Transilvania, coordonator al proiectului cultural Concursul de Arhitectură pentru Spațiul Public. Domenii de interes : Aplicarea tehnologiilor GIS în analizarea și proiectarea mediului urban, dezvoltarea de instrumente comune de lucru între domenii conexe. Sorin Dan Clinci poate fi contactat la adresa <a href=\"mailto: evenimentoart2012@gmail.com\">evenimentoart2012 [at] gmail.com</a>."
+
+- id: robertraiz
+  name: Robert Raiz
+  description: "Absolvent al Facultății de Geografie și a masterului de Geomatică, ambele din cadrul Universităţii \"Babeș-Bolyai\" din Cluj-Napoca. Cartograf în cadrul companiei PropertyShark/Yardi Systems. Domenii de interes: GIS, webmapping, modelare hidrologică, GIS Scripting. Robert poate fi contactat la adresa <a href=\"mailto: raizrobert@gmail.com\">raizrobert [at] gmail.com</a>."
+
+- id: cavranceanu
+  name: Cristina Andra Vrînceanu
+  description: "În prezent  masterandă în cadrul secției de GIS a Facultății de Geografie, sunt pasionată de geologie, teledetecție, fotogrammetrie,  cartografie și astronomie. Îmi doresc să împletesc cât mai frumos toate aceste domenii, iar din munca mea să  fie mereu o îmbinare de util și armonios. Pot fi contactată la <a href=\"mailto: cavrinceanu@yahoo.com\">cavrinceanu [at] yahoo.com</a>."
 
 - id: rujoiumarina
   name: Marina Rujoiu
-
-- id: cavrinceanu
-  name: Cristina Andra Vrînceanu
+  description: "Student-doctorand la Facultatea de Geografie, Universitatea din București. Domeniile de interes sunt GIS, teledetecție, cartografie. Marina poate fi contactată la adresa <a href=\"mailto: rujoiumarina@yahoo.com\">rujoiumarina [at] yahoo.com</a>."
 
 - id: danagrad
   name: Dana Grad (Gherghelaș-Androo)
+  description: "Absolventă a Facultății de Geografie din cadrul Universității Babeș-Bolyai și a Facultății de Mine, Petrol și Gaze, specializarea Topografie Minieră din cadrul Universității din Petroșani. Domenii de interes: cartografie istorică, GIS, topografie, teledetecție și modelare 3D. Dana poate fi contactată la adresa <a href=\"mailto: dana@geo-spatial.org\">dana [at] geo-spatial.org</a> sau <a href=\"mailto: dana_grad@yahoo.com\">dana_grad [at] yahoo.com</a>. "
 
 - id: andrageangu
   name: Andra Geangu
+  description: "Absolventă a Facultății de Geografie a Universității din București, specializarea Geografia Turismului – licență și SIG – master. În prezent, coordoneez partea de activitate din domeniul baze de date, SIG și cercetare pentru dezvoltarea unei enciclopedii-atlas interactive în mediul online. Domenii de interes: GIS, cercetare, baze de date, geografie fizică, geografie umană, cartografie, design, geovizualizare, programare. Andra poate fi contactată la adresa <a href=\"mailto: andrageangu@gmail.com\">andrageangu [at] gmail.com</a>."
 
 - id: ionutpascu
   name: Ionuț - Silviu Pascu
+  description: "Absolvent al Facultății de Silvicultură şi Exploatări Forestiere Braşov, specializarea Inginerie Geodezică și al Masterului GIS din cadrul Facultăţii de Geografie – Universitatea din Bucureşti, în prezent ocupă poziția de harpedonat în cadrul Kronpass. Pasiuni:analiză GIS în probleme de biodiversitate, webmapping și alternative UAV pentru achiziția de date. Ionuț poate fi contactat la <a href=\"mailto: ionut@kronpass.ro\">ionut [at] kronpass.ro</a>."
 
 - id: tcastravet
   name: Tudor Castraveț
+  description: "Cercetător științific în cadrul Laboratorului Geografia Peisajelor – Institutul de Ecologie și Geografie, Chișinău. Absolvent al Facultății de Geografie a Universității de Stat Tiraspol (cu sediul la Chișinău). Domenii de interes: aplicații GIS în modelarea proceselor hidrologice și geomorfologice. Tudor poate fi contactat la <a href=\"mailto: tcastravet@gmail.com\">tcastravet [at] gmail.com</a>."
 
-- id: alex
+- id: 57
   name: Alex Morega
+  description: "Programator web, freelancer, voluntar ROSEdu. Domenii de interes: hărți web, vizualizări de date, aplicații web. Alex poate fi contactat la <a href=\"mailto: alex@grep.ro\">alex [at] grep.ro."
 

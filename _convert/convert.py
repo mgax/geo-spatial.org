@@ -8,9 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine('mysql+oursql://root@localhost/geospatial')
 Base = declarative_base()
-Session = sessionmaker(bind=engine)
 
 
 class Article(Base):
@@ -25,7 +23,24 @@ class Article(Base):
     url_title = Column(String)
 
 
-session = Session()
+class User(Base):
+    __tablename__ = 'site_users'
+
+    id = Column(Integer, primary_key=True)
+    userid = Column(String)
+    name = Column(String)
+    website = Column(String)
+    description = Column(String)
+    photo = Column(String)
+
+
+def create_session(dbname):
+    engine = create_engine('mysql+oursql://root@localhost/' + dbname)
+    return sessionmaker(bind=engine)()
+
+
+def jsonify(txt):
+    return json.dumps(txt, ensure_ascii=False).encode('utf-8')
 
 
 def export(slug):
@@ -40,12 +55,27 @@ def export(slug):
     folder = article.section
     with open(folder + '/' + slug + '.html', 'wb') as f:
         f.write('---\n')
-        f.write('title: ' + json.dumps(article.title) + '\n')
-        f.write('authorid: ' + json.dumps(article.authorid) + '\n')
+        f.write('title: ' + jsonify(article.title) + '\n')
+        f.write('authorid: ' + jsonify(article.authorid) + '\n')
         f.write('time: ' + str(article.posted) + '\n')
         f.write('---\n')
         f.write(html.encode('utf-8'))
         f.write('\n')
 
 
-export(sys.argv[1])
+def dump_authors():
+    for user in session.query(User).order_by('id'):
+        print '- id:', user.userid.encode('utf-8')
+        print '  name:', user.name.encode('utf-8')
+        print '  description:', jsonify(user.description)
+        print
+
+
+arg = sys.argv[1]
+
+if arg == '--users':
+    session = create_session('earth')
+    dump_authors()
+else:
+    session = create_session('geospatial')
+    export(arg)
