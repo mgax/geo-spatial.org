@@ -1,11 +1,16 @@
 ---
 ---
 <div id="lista_articole">
-<div class="introducere" style="margin-top: 15px">
-<p><em>Alegerea unui spațiu de discuție poate constitui din start trasarea cadrului general al dialogului viitor. geo-spatial.org își propune realizarea unei baze de date și cunoștințe geospațiale, disponibile liber. O comunitate nu se naște peste noapte, este firesc ca mai întîi să primești iar apoi să oferi la randul tău. Noi consideram important și modul în care oferi.<br /><br />
+  <div class="introducere" style="margin-top: 15px">
+  <p><em>Alegerea unui spațiu de discuție poate constitui din start trasarea cadrului general al dialogului viitor. geo-spatial.org își propune realizarea unei baze de date și cunoștințe geospațiale, disponibile liber. O comunitate nu se naște peste noapte, este firesc ca mai întîi să primești iar apoi să oferi la randul tău. Noi consideram important și modul în care oferi.<br /><br />
 
-Soluțiile propuse se doresc a fi porți deschise către subiecte de interes comun și nu vin să dea verdicte. Pentru a evolua într-un dialog este esențial să asculți cu atenție părerea celuilalt, reușind apoi să oferi un răspuns argumentat. Dorim să promovăm un dialog senin, lipsit de încrîncenări sterile. Numai așa se poate ajunge la o creștere a calității materialelor aflate pe geo-spatial.org.<br /><br />
+  Soluțiile propuse se doresc a fi porți deschise către subiecte de interes comun și nu vin să dea verdicte. Pentru a evolua într-un dialog este esențial să asculți cu atenție părerea celuilalt, reușind apoi să oferi un răspuns argumentat. Dorim să promovăm un dialog senin, lipsit de încrîncenări sterile. Numai așa se poate ajunge la o creștere a calității materialelor aflate pe geo-spatial.org.<br /><br />
 
-Mai multe informații referitoare la proiectul geo-spatial.org puteți găsi în secțiunea <a class="download_image" href="{{ site.base_url }}/info">Info</a>.</br /></em></p>
-</div>
+  Mai multe informații referitoare la proiectul geo-spatial.org puteți găsi în secțiunea <a class="download_image" href="{{ site.base_url }}/info">Info</a>.</br /></em></p>
+  </div>
+
+  {% assign article_list = site.documents |where:"homepage",true |sort:"time" %}
+  {% for page in article_list reversed limit:3 %}
+    {% include teaser.html page=page %}
+  {% endfor %}
 </div>

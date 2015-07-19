@@ -6,31 +6,31 @@ defaults:
     values: {layout: "page"}
 
   - scope: {path: "", type: "articole"}
-    values: {layout: "article"}
+    values: {layout: "article", homepage: true}
 
   - scope: {path: "", type: "tutoriale"}
-    values: {layout: "article"}
+    values: {layout: "article", homepage: true}
 
   - scope: {path: "", type: "recenzii"}
-    values: {layout: "article"}
+    values: {layout: "article", homepage: true}
 
   - scope: {path: "", type: "resurse"}
-    values: {layout: "article"}
+    values: {layout: "article", homepage: true}
 
   - scope: {path: "", type: "galerii"}
-    values: {layout: "article"}
+    values: {layout: "article", homepage: true}
 
   - scope: {path: "", type: "download"}
-    values: {layout: "article"}
+    values: {layout: "article", homepage: true}
 
   - scope: {path: "", type: "osgeo"}
-    values: {layout: "article"}
+    values: {layout: "article", homepage: true}
 
   - scope: {path: "", type: "blog"}
-    values: {layout: "article"}
+    values: {layout: "article", homepage: true}
 
   - scope: {path: "", type: "info"}
-    values: {layout: "article"}
+    values: {layout: "article", homepage: true}
 
   - scope: {path: "", type: "autori"}
     values: {layout: "author"}
