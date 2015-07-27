@@ -76,7 +76,11 @@ $(document).ready(function() {
 		}
 
 		$.post('http://geospatial.riker.grep.ro/_proxy/myown/getmapsheets_soviet50k.php', {'planse': planse, 'qType': 1}, function(data) {
-		$('#tabelTrapezeContainer').html(data.replace(/\/images\//g, '{{ site.image_base_url }}/'));
+		$('#tabelTrapezeContainer').html(
+			data
+			.replace(/\/images\//g, '{{ site.image_base_url }}/')
+			.replace(/\/file_download\//g, 'http://geo-spatial.org/file_download/')
+		);
 		});
 	return false;
 	});
@@ -302,7 +306,7 @@ As for the linecence the thing is that soviet topographic maps are not copyright
 <ul>
 	<li><a href="http://geospatial.riker.grep.ro/_proxy/geoserver/ows?service=WMS&request=GetCapabilities">WMS</a></li>
 	<li><a href="http://geospatial.riker.grep.ro/_proxy/geoserver/gwc/service/wms?service=WMS&version=1.1.1&request=getcapabilities&tiled=true">WMTS</a></li>
-	<li><a href="/file_download/25410">KML</a></li>
+	<li><a href="http://geo-spatial.org/file_download/25410">KML</a></li>
 </ul>
 
 <h2>Download</h2>
@@ -369,8 +373,8 @@ As for the linecence the thing is that soviet topographic maps are not copyright
           <td style="vertical-align: middle; clear: both;">
             <a target="blank" href="{{ site.geoserver_base_url }}/geospatial/wms?service=WMS&version=1.1.0&request=GetMap&layers=geospatial:mozaic_soviet_50k&styles=&bbox=131146.90628047846,240724.85044557217,895194.4939547718,740965.0617246781&width=512&height=335&srs=EPSG:31700&format=application/openlayers"><img src="{{ site.image_base_url }}/preview.png" border="0" alt="Vizualizare" title="Vizualizare"></a>
           </td>
-          <td style="vertical-align: middle; clear: both;"><a href="/file_download/29252">GeoTiff (2.8 GiB)</a></td>
-          <td style="vertical-align: middle; clear: both;"><a href="/file_download/29253">KML (1 KiB)</a></td>
+          <td style="vertical-align: middle; clear: both;"><a href="http://geo-spatial.org/file_download/29252">GeoTiff (2.8 GiB)</a></td>
+          <td style="vertical-align: middle; clear: both;"><a href="http://geo-spatial.org/file_download/29253">KML (1 KiB)</a></td>
         </tr>
       </table>
   </div>
