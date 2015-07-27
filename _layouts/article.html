@@ -18,7 +18,16 @@ layout: base
   <h4 class="autor_full">de {% include author.html authorid=page.authorid %}</h4>
 
   <div class="introducere" id="introducere">
-  <h5 class="info_full">Publicat la {{ page.time | date: "%d %b %Y" }} | Secţiunea: <a href="http://www.geo-spatial.org/articole/">Articole</a> | Categoria: <a href="http://www.geo-spatial.org/articole/?c=art_cartografie">Cartografie</a>/<a href="http://www.geo-spatial.org/articole/?c="></a></h5>
+  <h5 class="info_full">
+    Publicat la {{ page.time | date: "%d %b %Y" }}
+
+    | Secţiunea:
+    {% assign collection = site.collections[page.collection] %}
+    <a href="{{ site.base_url }}/{{ page.collection }}/">{{ collection.title }}</a>
+
+    | Categoria:
+    <a href="#">{{ page.category1 }}</a>/<a href="#">{{ page.category2 }}</a>
+  </h5>
 
 
 
