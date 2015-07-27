@@ -75,8 +75,8 @@ $(document).ready(function() {
 		  planse = planse + '@' + select.features[i].attributes.indicativ;
 		}
 
-		$.post('http://www.geo-spatial.org/php/myown/getmapsheets_soviet50k.php', {'planse': planse, 'qType': 1}, function(data) {
-		$('#tabelTrapezeContainer').html(data);
+		$.post('http://geospatial.riker.grep.ro/_proxy/myown/getmapsheets_soviet50k.php', {'planse': planse, 'qType': 1}, function(data) {
+		$('#tabelTrapezeContainer').html(data.replace(/\/images\//g, '{{ site.image_base_url }}/'));
 		});
 	return false;
 	});
@@ -124,7 +124,6 @@ $(function() {
 		var lat = 5787200;
 		var lon = 2768854;
        function initMap(){
-			OpenLayers.ProxyHost="http://www.geo-spatial.org/cgi-bin/proxy.cgi/?url=";
            var options = {
                projection: new OpenLayers.Projection("EPSG:900913"),
                displayProjection: new OpenLayers.Projection("EPSG:4326"),
@@ -141,8 +140,8 @@ $(function() {
 
            };
            map = new OpenLayers.Map('map', options);
-			index_soviet = new OpenLayers.Layer.WMS("Caroiaj","http://www.geo-spatial.org/geoserver/wms", {layers: 'geospatial:index_eharta_soviet_50k_existent', format: 'image/png', srs: 'EPSG:900913', tiled: 'true', transparent: 'true'}, {isBaseLayer: false, displayInLayerSwitcher: false});
-			mozaic_soviet_50k = new OpenLayers.Layer.WMS("Mozaic 1: 50 000","http://www.geo-spatial.org/geoserver/wms", {layers: 'geospatial:mozaic_soviet_50k', format: 'image/png', srs: 'EPSG:900913', transparent: 'true'}, {isBaseLayer: true, displayInLayerSwitcher: true});
+			index_soviet = new OpenLayers.Layer.WMS("Caroiaj","http://geospatial.riker.grep.ro/_proxy/geoserver/wms", {layers: 'geospatial:index_eharta_soviet_50k_existent', format: 'image/png', srs: 'EPSG:900913', tiled: 'true', transparent: 'true'}, {isBaseLayer: false, displayInLayerSwitcher: false});
+			mozaic_soviet_50k = new OpenLayers.Layer.WMS("Mozaic 1: 50 000","http://geospatial.riker.grep.ro/_proxy/geoserver/wms", {layers: 'geospatial:mozaic_soviet_50k', format: 'image/png', srs: 'EPSG:900913', transparent: 'true'}, {isBaseLayer: true, displayInLayerSwitcher: true});
 			index_soviet.setOpacity(0.7);
            mapnik = new OpenLayers.Layer.TMS(
                "OpenStreetMap",
@@ -301,8 +300,8 @@ As for the linecence the thing is that soviet topographic maps are not copyright
 <h2>Accesarea hărților folosind servicii online</h2>
 
 <ul>
-	<li><a href="http://www.geo-spatial.org/geoserver/ows?service=WMS&request=GetCapabilities">WMS</a></li>
-	<li><a href="http://www.geo-spatial.org/geoserver/gwc/service/wms?service=WMS&version=1.1.1&request=getcapabilities&tiled=true">WMTS</a></li>
+	<li><a href="http://geospatial.riker.grep.ro/_proxy/geoserver/ows?service=WMS&request=GetCapabilities">WMS</a></li>
+	<li><a href="http://geospatial.riker.grep.ro/_proxy/geoserver/gwc/service/wms?service=WMS&version=1.1.1&request=getcapabilities&tiled=true">WMTS</a></li>
 	<li><a href="/file_download/25410">KML</a></li>
 </ul>
 
@@ -345,7 +344,7 @@ As for the linecence the thing is that soviet topographic maps are not copyright
 
   <!-- Filtru 3: Indicativ 50k-->
   <div id="filtru-3">
-    <form id="indicativSelectTrapeze50k" name="indicativSelectTrapeze50k" action="../php/myown/getmapsheets_soviet50k.php" method="post">
+    <form id="indicativSelectTrapeze50k" name="indicativSelectTrapeze50k" action="http://geospatial.riker.grep.ro/_proxy/myown/getmapsheets_soviet50k.php" method="post">
     </form>
       <br />
       <input type="hidden" name="qType" id="qType" value="3" />
@@ -368,7 +367,7 @@ As for the linecence the thing is that soviet topographic maps are not copyright
         <tr id="mozaicSoviet" name="mozaicSoviet">
           <td style="vertical-align: middle; font-weight: bold; clear: both;"><img src="{{ site.image_base_url }}/mozaic_soviet_50k_thumb.png" /></td>
           <td style="vertical-align: middle; clear: both;">
-            <a target="blank" href="{{ site.base_url }}/geoserver/geospatial/wms?service=WMS&version=1.1.0&request=GetMap&layers=geospatial:mozaic_soviet_50k&styles=&bbox=131146.90628047846,240724.85044557217,895194.4939547718,740965.0617246781&width=512&height=335&srs=EPSG:31700&format=application/openlayers"><img src="{{ site.image_base_url }}/preview.png" border="0" alt="Vizualizare" title="Vizualizare"></a>
+            <a target="blank" href="{{ site.geoserver_base_url }}/geospatial/wms?service=WMS&version=1.1.0&request=GetMap&layers=geospatial:mozaic_soviet_50k&styles=&bbox=131146.90628047846,240724.85044557217,895194.4939547718,740965.0617246781&width=512&height=335&srs=EPSG:31700&format=application/openlayers"><img src="{{ site.image_base_url }}/preview.png" border="0" alt="Vizualizare" title="Vizualizare"></a>
           </td>
           <td style="vertical-align: middle; clear: both;"><a href="/file_download/29252">GeoTiff (2.8 GiB)</a></td>
           <td style="vertical-align: middle; clear: both;"><a href="/file_download/29253">KML (1 KiB)</a></td>
@@ -1038,7 +1037,6 @@ As for the linecence the thing is that soviet topographic maps are not copyright
       'M-35-134-C'
     ];
     trapeze.forEach(function(tr) {
-      console.log(tr);
       var $input = $('<input type=checkbox>');
       $input.attr({id: tr, name: tr, value: tr});
       var $label = $('<label>').attr({'for': tr}).text(tr);
