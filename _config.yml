@@ -1,5 +1,5 @@
 base_url: "http://mgax.github.io/geo-spatial.org"
-image_base_url: "http://www.geo-spatial.org/images"
+image_base_url: "https://dl.dropboxusercontent.com/u/103063/static/geospatial"
 geoserver_base_url: "http://www.geo-spatial.org/geoserver"
 
 defaults:
