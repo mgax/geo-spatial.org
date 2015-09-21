@@ -50,3 +50,6 @@ collections:
   autori:    {output: true}
 
 menu: [articole, tutoriale, recenzii, resurse, galerii, download, osgeo, blog, info]
+
+exclude:
+  - 'Readme.md'
